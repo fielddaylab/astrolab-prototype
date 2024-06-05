@@ -74,3 +74,7 @@ crashlytics-build.properties
 # Real Stars Skybox
 /[Aa]ssets/Real Stars Skybox/*
 /[Aa]ssets/Real Stars Skybox.meta
+
+# Standard Assets
+/[Aa]ssets/Standard Assets/*
+/[Aa]ssets/Standard Assets.meta
