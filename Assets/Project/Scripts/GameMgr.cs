@@ -7,6 +7,8 @@ namespace AstroLab
     public class GameMgr : MonoBehaviour
     {
         public static GameMgr Instance;
+        
+        public Camera MainCamera;
 
         public GameConsts Consts;
 
