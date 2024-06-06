@@ -16,10 +16,15 @@ namespace AstroLab
         /// <returns></returns>
         public static Vector3 RAscDeclDegreesToCartesianCoordinates(float rAsc, float decl)
         {
-            double raRad = Math.PI * rAsc / 180.0;
-            double decRad = Math.PI * decl / 180.0;
+            double raRad = DegreeToRadian(rAsc);
+            double decRad = DegreeToRadian(decl);
 
-            return RAscDeclRadiansToCartesianCoordinates((float)raRad, (float)decRad);
+            return RadiansToCartesianCoordinates((float)raRad, (float)decRad);
+        }
+
+        public static double DegreeToRadian(double degree)
+        {
+            return degree * Math.PI / 180.0;
         }
 
         /// <summary>
@@ -29,7 +34,7 @@ namespace AstroLab
         /// <param name="rAsc">in degrees</param>
         /// <param name="decl"></param>
         /// <returns></returns>
-        public static Vector3 RAscDeclRadiansToCartesianCoordinates(float raRad, float decRad)
+        public static Vector3 RadiansToCartesianCoordinates(float raRad, float decRad)
         {
             // Note: Skybox map is rotated -90 degrees in the z from expected calculations
             
@@ -61,6 +66,7 @@ namespace AstroLab
             return degrees;
         }
 
+
         /// <summary>
         /// Converts Right Ascension hours, minutes, and seconds into degrees
         /// </summary>
@@ -74,6 +80,36 @@ namespace AstroLab
             double totalHours = hours + (minutes / 60.0) + (seconds / 3600.0);
             double degrees = totalHours;
             return degrees;
+        }
+
+        /// <summary>
+        /// Converts degree hours, minutes, and seconds into degrees
+        /// </summary>
+        /// <param name="hours"></param>
+        /// <param name="minutes"></param>
+        /// <param name="seconds"></param>
+        /// <returns></returns>
+        public static double DegreesToDecimalDegrees(int hours, int minutes, double seconds)
+        {
+            // Convert hours, minutes, and seconds to degrees
+            double totalHours = hours + (minutes / 60.0) + (seconds / 3600.0);
+            double degrees = totalHours;
+            return degrees;
+        }
+
+        /// <summary>
+        /// Converts right ascension and declination into cartesian coordinates on a unit
+        /// sphere (r = 1)
+        /// </summary>
+        /// <param name="rAsc">in degrees</param>
+        /// <param name="decl"></param>
+        /// <returns></returns>
+        public static Vector3 LatLongToCartesianCoordinates(float lat, float longitude)
+        {
+            double latRad = DegreeToRadian(lat);
+            double longRad = DegreeToRadian(longitude);
+
+            return RadiansToCartesianCoordinates((float)latRad, (float)longRad);
         }
 
         public static Vector2 CartesianToPolar(Vector3 cartPoint)

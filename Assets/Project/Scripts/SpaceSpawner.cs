@@ -8,8 +8,6 @@ namespace AstroLab {
     {
         [SerializeField] private GameObject m_sampleObj;
 
-        [SerializeField] private float m_skyboxDist = 1000;
-
         [Header("Degrees")]
         [SerializeField] private Vector3 m_sampleRA;
         [SerializeField] private Vector3 m_sampleDeclination;
@@ -20,20 +18,24 @@ namespace AstroLab {
 
 #if UNITY_EDITOR
 
-        [ContextMenu("Place Obj At Location (Right Ascension + Declension degrees)")]
+        [ContextMenu("(Degrees) Place Obj At Location (Right Ascension + Declension)")]
         private void SampleLocation()
         {
+            int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
+
             float raDegrees = (float)CoordinateUtility.RAToDegrees((int)m_sampleRA.x, (int)m_sampleRA.y, m_sampleRA.z);
             float declDegrees = (float)CoordinateUtility.DeclensionToDecimalDegrees((int)m_sampleDeclination.x, (int)m_sampleDeclination.y, m_sampleDeclination.z);
             var pos = CoordinateUtility.RAscDeclDegreesToCartesianCoordinates(raDegrees, declDegrees);
-            m_sampleObj.transform.position = pos * m_skyboxDist;
+            m_sampleObj.transform.position = pos * skyboxDist;
         }
 
-        [ContextMenu("Place Obj At Location (Right Ascension + Declension radians)")]
+        [ContextMenu("(Radians) Place Obj At Location (Right Ascension + Declension)")]
         private void SampleLocationRadians()
         {
-            var pos = CoordinateUtility.RAscDeclRadiansToCartesianCoordinates(m_sampleRARadians, m_sampleDeclinationRadians);
-            m_sampleObj.transform.position = pos * m_skyboxDist;
+            int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
+
+            var pos = CoordinateUtility.RadiansToCartesianCoordinates(m_sampleRARadians, m_sampleDeclinationRadians);
+            m_sampleObj.transform.position = pos * skyboxDist;
         }
 
 #endif // UNITY_EDITOR
