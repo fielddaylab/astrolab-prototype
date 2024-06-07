@@ -10,6 +10,7 @@ namespace AstroLab
         private Camera m_camera;
 
         [SerializeField] private Transform m_camRoot;
+        [SerializeField] private bool m_enableMouseControls;
 
         [Space(5)]
         [Header("Look")]
@@ -57,7 +58,10 @@ namespace AstroLab
 
         private void ProcessLook()
         {
-            ProcessMouseLook();
+            if (m_enableMouseControls)
+            {
+                ProcessMouseLook();
+            }
 
             ProcessKeyboardLook();
         }
@@ -67,30 +71,30 @@ namespace AstroLab
             var cursorPos = m_camera.ScreenToViewportPoint(Input.mousePosition);
 
             // Look X
-            if (cursorPos.x > 0 && cursorPos.x < m_lookThreshold)
+            if (/*cursorPos.x > 0 && */cursorPos.x < m_lookThreshold)
             {
                 // look left
-                var adjustedSpeed = (cursorPos.x > 0 && cursorPos.x < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (/*cursorPos.x > 0 && */cursorPos.x < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustHorizLook(-adjustedSpeed * Time.deltaTime);
             }
-            else if (cursorPos.x < 1 && cursorPos.x > 1 - m_lookThreshold)
+            else if (/*cursorPos.x < 1 && */cursorPos.x > 1 - m_lookThreshold)
             {
                 // look right
-                var adjustedSpeed = (cursorPos.x < 1 && cursorPos.x > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (/*cursorPos.x < 1 && */cursorPos.x > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustHorizLook(adjustedSpeed * Time.deltaTime);
             }
 
             // Look Y
-            if (cursorPos.y > 0 && cursorPos.y < m_lookThreshold)
+            if (/*cursorPos.y > 0 && */cursorPos.y < m_lookThreshold)
             {
                 // look down
-                var adjustedSpeed = (cursorPos.y > 0 && cursorPos.y < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (/*cursorPos.y > 0 && */cursorPos.y < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustVertLook(adjustedSpeed * Time.deltaTime);
             }
-            else if (cursorPos.y < 1 && cursorPos.y > 1 - m_lookThreshold)
+            else if (/*cursorPos.y < 1 && */cursorPos.y > 1 - m_lookThreshold)
             {
                 // look up
-                var adjustedSpeed = (cursorPos.y < 1 && cursorPos.y > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (/*cursorPos.y < 1 && */cursorPos.y > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustVertLook(-adjustedSpeed * Time.deltaTime);
             }
         }
@@ -101,9 +105,9 @@ namespace AstroLab
 
             m_vertLook = ClampAngle(m_vertLook, m_lookYClamp.x, m_lookYClamp.y);
 
-            var angles = m_camRoot.eulerAngles;
+            var angles = m_camRoot.localEulerAngles;
             angles.x = m_vertLook;
-            m_camRoot.eulerAngles = angles;
+            m_camRoot.localEulerAngles = angles;
         }
 
         private void AdjustHorizLook(float adjustment)
@@ -112,9 +116,9 @@ namespace AstroLab
 
             m_horizLook = ClampAngle(m_horizLook, m_lookXClamp.x, m_lookXClamp.y);
 
-            var angles = m_camRoot.eulerAngles;
+            var angles = m_camRoot.localEulerAngles;
             angles.y = m_horizLook;
-            m_camRoot.eulerAngles = angles;
+            m_camRoot.localEulerAngles = angles;
         }
 
         private void ProcessKeyboardLook()
@@ -143,7 +147,10 @@ namespace AstroLab
 
         private void ProcessZoom()
         {
-            ProcessMouseZoom();
+            if (m_enableMouseControls)
+            {
+                ProcessMouseZoom();
+            }
 
             ProcessKeyboardZoom();
         }
