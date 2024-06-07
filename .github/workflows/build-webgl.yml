@@ -21,9 +21,6 @@ jobs:
     # Setup Steps
 
     steps:
-    - name: Ensure directory exists
-      run: ssh -i ./key.txt ${{ secrets.FIELDDAY_WISC_EDU_DEPLOY_USER }}@${{ env.FIELDDAY_WISC_EDU_DEPLOY_HOST }} "mkdir -p ${{ env.DEPLOY_DIR }}"
-
     - name: Install OpenConnect
       run: sudo NEEDRESTART_MODE=a sudo apt-get update && sudo apt-get install openconnect
       
