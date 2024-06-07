@@ -34,7 +34,7 @@ namespace AstroLab
 
         private void OnBecameInvisible()
         {
-            m_focusVisual.gameObject.SetActive(false);
+            if (m_focusVisual) { m_focusVisual.gameObject.SetActive(false); }
         }
 
         private void LateUpdate()

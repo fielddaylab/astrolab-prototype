@@ -10,6 +10,7 @@ namespace AstroLab {
 
         private void Start()
         {
+            m_cam = GetComponent<Camera>();
             m_cam.farClipPlane = GameMgr.Instance.Consts.SkyboxDist;
         }
     }
