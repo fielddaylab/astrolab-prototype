@@ -118,8 +118,8 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   analogMovement: 0
-  cursorLocked: 1
-  cursorInputForLook: 1
+  cursorLocked: 0
+  cursorInputForLook: 0
 --- !u!114 &1461722334774992306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_CustomSkybox
       value: 
       objectReference: {fileID: 2100000, guid: 281ddd71b990ce9449efecec53925061, type: 2}
+    - target: {fileID: 8350788127551072122, guid: ebbd32dcb8045dc4f82118fac564ad52, type: 3}
+      propertyPath: m_camRoot
+      value: 
+      objectReference: {fileID: 6538962285982999778}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebbd32dcb8045dc4f82118fac564ad52, type: 3}
 --- !u!4 &7193345736545215193 stripped
