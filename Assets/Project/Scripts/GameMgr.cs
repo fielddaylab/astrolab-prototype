@@ -8,7 +8,8 @@ namespace AstroLab
     {
         public static GameMgr Instance;
         
-        public Camera MainCamera;
+        public Camera SkyboxCamera;
+        public Camera InterfaceCamera;
 
         public GameConsts Consts;
 

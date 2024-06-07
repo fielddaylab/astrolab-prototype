@@ -40,7 +40,7 @@ namespace AstroLab
         private void LateUpdate()
         {
             // calculate this object's screen position
-            var point = GameMgr.Instance.MainCamera.WorldToScreenPoint(this.transform.position);
+            var point = GameMgr.Instance.SkyboxCamera.WorldToScreenPoint(this.transform.position);
 
             m_focusVisual.Rect.anchoredPosition = point;
         }
