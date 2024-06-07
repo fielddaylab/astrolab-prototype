@@ -1483,6 +1483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1170512689348912237, guid: ecef6bfae6d4c4f4fbe97bfc8d2e2ef5, type: 3}
+      propertyPath: m_lookIncrement
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1461722334774992308, guid: ecef6bfae6d4c4f4fbe97bfc8d2e2ef5, type: 3}
       propertyPath: m_Enabled
       value: 1

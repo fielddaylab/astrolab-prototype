@@ -17,6 +17,7 @@ namespace AstroLab
         [SerializeField] private float m_lookRapidThreshold; // faster look threshold
         [SerializeField] private float m_lookSpeed;
         [SerializeField] private float m_lookRapidSpeed;
+        [SerializeField] private float m_lookIncrement;
         [SerializeField] private Vector2 m_lookXClamp; // rotation limits in given direction (x is min X, y is max X)
         [SerializeField] private Vector2 m_lookYClamp; // rotation limits in given direction (x is min Y, y is max Y)
 
@@ -28,6 +29,7 @@ namespace AstroLab
         [SerializeField] private Vector2 m_zoomBounds; // x is min, y is max
 
         private float m_vertLook; // accumulated rotation vertically
+        private float m_horizLook; // accumulated rotation horizontally
 
         #region Unity Callbacks
 
@@ -68,22 +70,14 @@ namespace AstroLab
             if (cursorPos.x > 0 && cursorPos.x < m_lookThreshold)
             {
                 // look left
-                var newRotation = m_camRoot.localEulerAngles;
-
                 var adjustedSpeed = (cursorPos.x > 0 && cursorPos.x < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
-                newRotation.y = ClampAngle(newRotation.y - adjustedSpeed * Time.deltaTime, m_lookXClamp.x, m_lookXClamp.y);
-
-                m_camRoot.localEulerAngles = newRotation;
+                AdjustHorizLook(-adjustedSpeed * Time.deltaTime);
             }
             else if (cursorPos.x < 1 && cursorPos.x > 1 - m_lookThreshold)
             {
                 // look right
-                var newRotation = m_camRoot.localEulerAngles;
-
                 var adjustedSpeed = (cursorPos.x < 1 && cursorPos.x > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
-                newRotation.y = ClampAngle(newRotation.y + adjustedSpeed * Time.deltaTime, m_lookXClamp.x, m_lookXClamp.y);
-
-                m_camRoot.localEulerAngles = newRotation;
+                AdjustHorizLook(adjustedSpeed * Time.deltaTime);
             }
 
             // Look Y
@@ -91,34 +85,60 @@ namespace AstroLab
             {
                 // look down
                 var adjustedSpeed = (cursorPos.y > 0 && cursorPos.y < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
-
-                //m_camRoot.Rotate(adjustedSpeed * Time.deltaTime, 0, 0, Space.Self);
-                m_vertLook += adjustedSpeed * Time.deltaTime;
-
-                m_vertLook = ClampAngle(m_vertLook, m_lookYClamp.x, m_lookYClamp.y);
-
-                var angles = m_camRoot.eulerAngles;
-                angles.x = m_vertLook;
-                m_camRoot.eulerAngles = angles;
+                AdjustVertLook(adjustedSpeed * Time.deltaTime);
             }
             else if (cursorPos.y < 1 && cursorPos.y > 1 - m_lookThreshold)
             {
                 // look up
                 var adjustedSpeed = (cursorPos.y < 1 && cursorPos.y > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
-                //m_camRoot.Rotate(-adjustedSpeed * Time.deltaTime, 0, 0, Space.Self);
-                m_vertLook -= adjustedSpeed * Time.deltaTime;
-
-                m_vertLook = ClampAngle(m_vertLook, m_lookYClamp.x, m_lookYClamp.y);
-
-                var angles = m_camRoot.eulerAngles;
-                angles.x = m_vertLook;
-                m_camRoot.eulerAngles = angles;
+                AdjustVertLook(-adjustedSpeed * Time.deltaTime);
             }
+        }
+
+        private void AdjustVertLook(float adjustment)
+        {
+            m_vertLook += adjustment;
+
+            m_vertLook = ClampAngle(m_vertLook, m_lookYClamp.x, m_lookYClamp.y);
+
+            var angles = m_camRoot.eulerAngles;
+            angles.x = m_vertLook;
+            m_camRoot.eulerAngles = angles;
+        }
+
+        private void AdjustHorizLook(float adjustment)
+        {
+            m_horizLook += adjustment;
+
+            m_horizLook = ClampAngle(m_horizLook, m_lookXClamp.x, m_lookXClamp.y);
+
+            var angles = m_camRoot.eulerAngles;
+            angles.y = m_horizLook;
+            m_camRoot.eulerAngles = angles;
         }
 
         private void ProcessKeyboardLook()
         {
-
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                // look up
+                AdjustVertLook(-m_lookIncrement);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                // look down
+                AdjustVertLook(m_lookIncrement);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                // look left
+                AdjustHorizLook(-m_lookIncrement);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                // look right
+                AdjustHorizLook(m_lookIncrement);
+            }
         }
 
         private void ProcessZoom()
