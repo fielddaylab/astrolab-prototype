@@ -37,7 +37,7 @@ namespace AstroLab
             m_focusVisual.gameObject.SetActive(false);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             // calculate this object's screen position
             var point = GameMgr.Instance.MainCamera.WorldToScreenPoint(this.transform.position);
