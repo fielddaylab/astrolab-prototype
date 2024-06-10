@@ -93,6 +93,8 @@ jobs:
     - name: Upload to web server via rsync
       uses: burnett01/rsync-deployments@5.2
       with:
+        switches: -avzr --delete
+        rsh: mkdir ${{ secrets.DEPLOY_DIR }} -p
         switches: -avzr --delete --rsync-path="mkdir -p ${{ secrets.DEPLOY_DIR }}/${{ env.BRANCH }} && rsync"
         path: build/WebGL/WebGL/*
         remote_path: ${{ vars.DEPLOY_DIR }}/${{ env.BRANCH }}
