@@ -43,6 +43,20 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
+    "com.unity.modules.xr": "1.0.0",
+    "com.beauprime.beauutil": "0.10.5",
+    "com.beauprime.beauroutine": "0.11.1",
+    "com.beauprime.beaupools": "0.3.1"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.beauprime.beaupools",
+        "com.beauprime.beauroutine",
+        "com.beauprime.beauutil"
+      ]
+    }
+  ]
 }

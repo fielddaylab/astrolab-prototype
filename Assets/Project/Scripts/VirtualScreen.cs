@@ -30,5 +30,9 @@ public class VirtualScreen : GraphicRaycaster
                 screenCaster.Raycast(eventData, resultAppendList);
             }
         }
+        else
+        {
+            base.Raycast(eventData, resultAppendList);
+        }
     }
 }

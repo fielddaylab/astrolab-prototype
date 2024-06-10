@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_camRoot: {fileID: 1722963813957111861}
-  m_enableMouseControls: 1
+  m_enableMouseControls: 0
   m_lookThreshold: 0.2
   m_lookRapidThreshold: 0.075
   m_lookSpeed: 20

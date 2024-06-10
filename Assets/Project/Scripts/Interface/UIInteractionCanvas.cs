@@ -9,7 +9,7 @@ namespace AstroLab
     {
         #region Inspector
 
-        [Header("Buttons")]
+        [Header("Main Buttons")]
         [SerializeField] private Button m_settingsButton;
         [SerializeField] private Button m_notebookButton;
         [SerializeField] private Button m_techButton;
@@ -20,6 +20,10 @@ namespace AstroLab
         [SerializeField] private OrientSlider m_magSlider;
         [SerializeField] private OrientSlider m_ascensionSlider;
         [SerializeField] private OrientSlider m_declinationSlider;
+
+        [Space(5)]
+        [Header("Modules")]
+        [SerializeField] private UIInterfaceModuleHub m_hub;
 
         #endregion // Inspector
 
@@ -44,22 +48,22 @@ namespace AstroLab
 
         private void HandleSettingsClicked()
         {
-
+            m_hub.OpenUI(UIID.Settings);
         }
 
         private void HandleNotebookClicked()
         {
-
+            m_hub.OpenUI(UIID.Notebook);
         }
 
         private void HandleTechClicked()
         {
-
+            m_hub.OpenUI(UIID.Tech);
         }
 
         private void HandleInstrumentsClicked()
         {
-
+            m_hub.OpenUI(UIID.Instruments);
         }
 
         #endregion // Handlers
