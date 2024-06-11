@@ -55,6 +55,7 @@ namespace AstroLab
         private void HandleFocusClicked()
         {
             Debug.Log("Clicked on " + Target.CelestialObj.Data.Name + "!");
+            GameMgr.Events.Dispatch(GameEvents.FocusableClicked, Target);
         }
     }
 }

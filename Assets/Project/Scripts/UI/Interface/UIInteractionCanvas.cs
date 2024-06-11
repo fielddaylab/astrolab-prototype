@@ -35,6 +35,8 @@ namespace AstroLab
             m_notebookButton.onClick.AddListener(HandleNotebookClicked);
             m_techButton.onClick.AddListener(HandleTechClicked);
             m_instrumentButton.onClick.AddListener(HandleInstrumentsClicked);
+
+            GameMgr.Events.Register<UIFocusable>(GameEvents.FocusableClicked, HandleFocusableClicked);
         }
 
         private void Start()
@@ -63,6 +65,12 @@ namespace AstroLab
 
         private void HandleInstrumentsClicked()
         {
+            m_hub.OpenUI(UIID.Instruments);
+        }
+
+        private void HandleFocusableClicked(UIFocusable focusable)
+        {
+            FocusMgr.Instance.LastSelectedFocusable = focusable;
             m_hub.OpenUI(UIID.Instruments);
         }
 

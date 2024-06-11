@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7306638881204739607}
   - component: {fileID: 7306638881204739606}
+  - component: {fileID: 8375329314832589122}
   m_Layer: 0
   m_Name: GameMgr
   m_TagString: Untagged
@@ -45,7 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87087bfea7ba9204fb76fa1165d3ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkyboxCamera: {fileID: 0}
+  InterfaceCamera: {fileID: 0}
   Consts: {fileID: 7306638881271765346}
+--- !u!114 &8375329314832589122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306638881204739600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91792ec22a0fd8240aafdf8974911c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_initialInstruments: 1
+  UnlockedInstruments: 0
 --- !u!1001 &3899687385687012423
 PrefabInstance:
   m_ObjectHideFlags: 0

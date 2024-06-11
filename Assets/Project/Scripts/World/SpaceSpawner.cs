@@ -42,6 +42,7 @@ namespace AstroLab {
                 // create object
                 var newObj = Instantiate(m_celestialObjPrefab, m_spawnRoot).GetComponent<CelestialObject>();
                 newObj.Populate(data);
+                newObj.gameObject.name = "CO: " + data.Name;
 
                 // create focus
                 UIFocusable newFocusable = newObj.GetComponent<UIFocusable>();

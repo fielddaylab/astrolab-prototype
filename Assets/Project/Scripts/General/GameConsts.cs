@@ -13,5 +13,7 @@ namespace AstroLab
     static public class GameEvents
     {
         static public readonly StringHash32 UISwitched = "world:ui-switched";
+        static public readonly StringHash32 FocusableClicked = "world:focusable-clicked"; // UIFocusable
+
     }
 }
