@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,42 +8,30 @@ namespace AstroLab
     [RequireComponent(typeof(Renderer))]
     public class UIFocusable : MonoBehaviour
     {
-        [SerializeField] private UIFocus m_focusVisual;
+        public Renderer Renderer;
 
-        private Renderer m_renderer;
+        public EventHandler BecameVisible;
+        public EventHandler BecameInvisible;
+
+        public CelestialObject CelestialObj;
 
         #region Unity Callbacks
 
-        private void Start()
+        public void Init(CelestialObject celObj)
         {
-            m_renderer = GetComponent<Renderer>();
+            Renderer = GetComponent<Renderer>();
 
-            if (m_renderer)
-            {
-                m_focusVisual.gameObject.SetActive(m_renderer.isVisible);
-            }
-            else
-            {
-                m_focusVisual.gameObject.SetActive(false);
-            }
+            CelestialObj = celObj;
         }
 
         private void OnBecameVisible()
         {
-            m_focusVisual.gameObject.SetActive(true);
+            BecameVisible?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnBecameInvisible()
         {
-            if (m_focusVisual) { m_focusVisual.gameObject.SetActive(false); }
-        }
-
-        private void LateUpdate()
-        {
-            // calculate this object's screen position
-            var point = GameMgr.Instance.SkyboxCamera.WorldToScreenPoint(this.transform.position);
-
-            m_focusVisual.Rect.anchoredPosition = point;
+            BecameInvisible?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion // Unity Callbacks

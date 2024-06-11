@@ -29,6 +29,10 @@ namespace AstroLab
 
         [SerializeField] private Vector2 m_zoomBounds; // x is min, y is max
 
+        [Space(5)]
+        [Header("Skyboxes")]
+        [SerializeField] private Material m_fallbackMat;
+
         private float m_vertLook; // accumulated rotation vertically
         private float m_horizLook; // accumulated rotation horizontally
 
@@ -38,6 +42,11 @@ namespace AstroLab
         {
             m_camera = GetComponent<Camera>();
             m_vertLook = m_camRoot.transform.localEulerAngles.x;
+
+            if (!GetComponent<Skybox>().material)
+            {
+                GetComponent<Skybox>().material = m_fallbackMat;
+            }
         }
 
         private void Update()

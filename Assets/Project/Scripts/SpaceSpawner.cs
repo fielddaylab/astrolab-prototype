@@ -6,7 +6,16 @@ namespace AstroLab {
 
     public class SpaceSpawner : MonoBehaviour
     {
+        public static SpaceSpawner Instance;
+
         [SerializeField] private GameObject m_sampleObj;
+        [SerializeField] private GameObject m_celestialObjPrefab;
+
+        [SerializeField] private CelestialData[] m_initialSpawns;
+        [SerializeField] private Transform m_spawnRoot;
+
+        [SerializeField] private GameObject m_defaultFocusPrefab;
+        [SerializeField] private Transform m_focusRoot;
 
         [Header("Degrees")]
         [SerializeField] private Vector3 m_sampleRA;
@@ -15,6 +24,72 @@ namespace AstroLab {
         [Header("Radians")]
         [SerializeField] private float m_sampleRARadians;
         [SerializeField] private float m_sampleDeclinationRadians;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (this != Instance)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            foreach(var data in m_initialSpawns)
+            {
+                // create object
+                var newObj = Instantiate(m_celestialObjPrefab, m_spawnRoot).GetComponent<CelestialObject>();
+                newObj.Populate(data);
+
+                // create focus
+                UIFocusable newFocusable = newObj.GetComponent<UIFocusable>();
+                if (newFocusable)
+                {
+                    newFocusable.Init(newObj);
+
+                    CreateFocusForFocusable(data, newFocusable);
+                }
+            }
+        }
+
+        private void CreateFocusForFocusable(CelestialData data, UIFocusable newFocusable)
+        {
+            UIFocus newFocus = null;
+            if (data.UseOverrideFocusVisual && data.OverrideFocusVisual != null)
+            {
+                newFocus = Instantiate(data.OverrideFocusVisual, m_focusRoot).GetComponent<UIFocus>();
+            }
+            else
+            {
+                newFocus = Instantiate(m_defaultFocusPrefab, m_focusRoot).GetComponent<UIFocus>();
+            }
+
+            if (newFocus)
+            {
+                newFocus.Init(newFocusable);
+            }
+        }
+
+
+        public void PositionObject(GameObject toPosition, Vector3 ra, Vector3 decl)
+        {
+            int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
+
+            float raDegrees = (float)CoordinateUtility.RAToDegrees((int)ra.x, (int)ra.y, ra.z);
+            float declDegrees = (float)CoordinateUtility.DeclensionToDecimalDegrees((int)decl.x, (int)decl.y, decl.z);
+            var pos = CoordinateUtility.RAscDeclDegreesToCartesianCoordinates(raDegrees, declDegrees);
+            toPosition.transform.position = pos * skyboxDist;
+        }
+
+        public void PositionObject(GameObject toPosition, float raRad, float declRad)
+        {
+            int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
+
+            var pos = CoordinateUtility.RadiansToCartesianCoordinates(raRad, declRad);
+            toPosition.transform.position = pos * skyboxDist;
+        }
 
 #if UNITY_EDITOR
 
