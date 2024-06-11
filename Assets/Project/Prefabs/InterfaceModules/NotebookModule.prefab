@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 16
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_CornerRadius: 15
+  m_CornerRadius: 5
   m_Resolution: 0
   m_Outline: 0
   m_Thickness: 1
@@ -241,10 +241,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 27.719482, y: -16.2872}
+  m_SizeDelta: {x: 319.2339, y: -190.5656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2090980073878021574
 CanvasGroup:
@@ -274,6 +274,10 @@ MonoBehaviour:
   LayoutBehavior: 0
   m_rootGroup: {fileID: 2090980073878021574}
   m_closeButton: {fileID: 2674307572696422794}
+  m_prevButton: {fileID: 0}
+  m_nextButton: {fileID: 0}
+  m_gridButton: {fileID: 0}
+  m_identifyButton: {fileID: 0}
 --- !u!1 &6222732519990870755
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3806879743539832510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -446,8 +450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -4, y: -4}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &2876536616187397838
 CanvasRenderer:

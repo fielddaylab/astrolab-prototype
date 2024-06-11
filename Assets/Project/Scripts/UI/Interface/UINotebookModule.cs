@@ -11,6 +11,11 @@ namespace AstroLab
         [Header("Notebook")]
         [SerializeField] private Button m_closeButton;
 
+        [SerializeField] private Button m_prevButton;
+        [SerializeField] private Button m_nextButton;
+        [SerializeField] private Button m_gridButton;
+        [SerializeField] private Button m_identifyButton;
+
         public override void Init()
         {
             base.Init();

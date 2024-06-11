@@ -142,14 +142,14 @@ namespace AstroLab
             }
 
             m_coordRAReadoutText.SetText(
-                finalRA.x.ToString("F2") + "h "
-                + finalRA.y.ToString("F2") + "m "
-                + finalRA.z.ToString("F2") + "s");
+                finalRA.x + "h "
+                + finalRA.y + "m "
+                + finalRA.z.ToString("F1") + "s");
 
             m_coordDeclReadoutText.SetText(
-                "+" + finalDecl.x.ToString("F2") + "\u00B0 "
-                + finalDecl.y.ToString("F2") + "' "
-                + finalDecl.z.ToString("F2") + "''");
+                "+" + finalDecl.x + "\u00B0 "
+                + finalDecl.y + "' "
+                + finalDecl.z.ToString("F1") + "''");
 
             m_coordConstellationReadoutText.SetText("[Not Implemented]");
 
