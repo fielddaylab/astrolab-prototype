@@ -14,10 +14,20 @@ namespace AstroLab
 
         [SerializeField] private TMP_Text m_objName;
 
-        [Header("Groups")]
+        [Header("Coordinate Group")]
         [SerializeField] private GameObject m_coordinatesGroup;
+        [SerializeField] private TMP_Text m_coordRAReadoutText;
+        [SerializeField] private TMP_Text m_coordDeclReadoutText;
+        [SerializeField] private TMP_Text m_coordConstellationReadoutText;
+
+
+        [Header("Photometer Group")]
         [SerializeField] private GameObject m_photometerGroup;
+
+        [Header("Spectrometer Group")]
         [SerializeField] private GameObject m_spectrometerGroup;
+
+        [Header("Color Group")]
         [SerializeField] private GameObject m_colorGroup;
 
         private static string UNKNOWN_OBJ_TEXT = "Unknown Object";
@@ -33,6 +43,14 @@ namespace AstroLab
             base.Open();
 
             DisplayName();
+
+            if (!FocusMgr.Instance.LastSelectedFocusable) {
+                m_coordinatesGroup.SetActive(false);
+                m_photometerGroup.SetActive(false);
+                m_spectrometerGroup.SetActive(false);
+                m_colorGroup.SetActive(false);
+                return;
+            } 
 
             if (InstrumentsMgr.Instance.AreInstrumentsUnlocked(InstrumentFlags.EquatorialCoords))
             {
@@ -91,11 +109,11 @@ namespace AstroLab
             {
                 if (FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified)
                 {
-                    m_objName.text = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.Name;
+                    m_objName.SetText(FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.Name);
                 }
                 else
                 {
-                    m_objName.text = UNKNOWN_OBJ_TEXT;
+                    m_objName.SetText(UNKNOWN_OBJ_TEXT);
                 }
             }
             else
@@ -106,6 +124,35 @@ namespace AstroLab
 
         private void DisplayEquatorialCoords()
         {
+            var currData = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data;
+
+            Vector3 finalRA;
+            Vector3 finalDecl;
+            if (currData.UseRadianRADecl)
+            {
+                var raDegrees = CoordinateUtility.RadianToDegree(currData.RARad);
+                finalRA = CoordinateUtility.DegreesToRA(raDegrees);
+                var declDegrees = CoordinateUtility.RadianToDegree(currData.DeclRad);
+                finalDecl = CoordinateUtility.DecimalDegreesToDegrees(declDegrees);
+            }
+            else
+            {
+                finalRA = currData.RA;
+                finalDecl = currData.Decl;
+            }
+
+            m_coordRAReadoutText.SetText(
+                finalRA.x.ToString("F2") + "h "
+                + finalRA.y.ToString("F2") + "m "
+                + finalRA.z.ToString("F2") + "s");
+
+            m_coordDeclReadoutText.SetText(
+                "+" + finalDecl.x.ToString("F2") + "\u00B0 "
+                + finalDecl.y.ToString("F2") + "' "
+                + finalDecl.z.ToString("F2") + "''");
+
+            m_coordConstellationReadoutText.SetText("[Not Implemented]");
+
             m_coordinatesGroup.SetActive(true);
         }
 

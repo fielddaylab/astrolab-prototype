@@ -27,6 +27,11 @@ namespace AstroLab
             return degree * Math.PI / 180.0;
         }
 
+        public static double RadianToDegree(double radian)
+        {
+            return radian * 180 / Math.PI;
+        }
+
         /// <summary>
         /// Converts right ascension and declination into cartesian coordinates on a unit
         /// sphere (r = 1)
@@ -66,9 +71,24 @@ namespace AstroLab
             return degrees;
         }
 
+        public static Vector3 DegreesToRA(double degrees)
+        {
+            int hrs, minutes = 0;
+            double seconds = 0;
+
+            degrees /= 15; // 1 hour of RA equals 15 degrees
+            hrs = (int)degrees;
+            degrees -= hrs;
+            minutes = (int)(degrees * 60);
+            degrees -= minutes / 60.0f;
+            seconds = degrees * 3600;
+
+            return new Vector3(hrs, minutes, (float)seconds);
+        }
+
 
         /// <summary>
-        /// Converts Right Ascension hours, minutes, and seconds into degrees
+        /// Converts declension hours, minutes, and seconds into degrees
         /// </summary>
         /// <param name="hours"></param>
         /// <param name="minutes"></param>
@@ -95,6 +115,20 @@ namespace AstroLab
             double totalHours = hours + (minutes / 60.0) + (seconds / 3600.0);
             double degrees = totalHours;
             return degrees;
+        }
+
+        public static Vector3 DecimalDegreesToDegrees(double decimalDegrees)
+        {
+            int hrs, minutes = 0;
+            double seconds = 0;
+
+            hrs = (int)decimalDegrees;
+            decimalDegrees -= hrs;
+            minutes = (int)(decimalDegrees * 60);
+            decimalDegrees -= minutes / 60.0f;
+            seconds = decimalDegrees * 3600;
+
+            return new Vector3(hrs, minutes, (float)seconds);
         }
 
         /// <summary>
