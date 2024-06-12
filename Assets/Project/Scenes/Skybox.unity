@@ -1611,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5906937568724568154, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5906937568724568154, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: screenCamera
