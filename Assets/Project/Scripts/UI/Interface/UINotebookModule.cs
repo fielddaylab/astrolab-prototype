@@ -21,6 +21,8 @@ namespace AstroLab
             base.Init();
          
             m_closeButton.onClick.AddListener(HandleCloseClicked);
+
+            GameMgr.Events.Register(GameEvents.NotebookUnlocksChanged, HandleNotebookUnlocksChanged);
         }
 
         public override void Open()
@@ -38,6 +40,11 @@ namespace AstroLab
         private void HandleCloseClicked()
         {
             this.Close();
+        }
+
+        private void HandleNotebookUnlocksChanged()
+        {
+            Open();
         }
 
         #endregion // Handlers

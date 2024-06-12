@@ -36,6 +36,8 @@ namespace AstroLab
         {
             base.Init();
             m_closeButton.onClick.AddListener(HandleCloseClicked);
+
+            GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
         }
 
         public override void Open()
@@ -169,6 +171,11 @@ namespace AstroLab
         private void DisplayColor()
         {
             m_colorGroup.SetActive(true);
+        }
+
+        private void HandleInstrumentUnlocksChanged()
+        {
+            if (m_rootGroup.alpha == 1) { Open(); }
         }
     }
 }

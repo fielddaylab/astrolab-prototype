@@ -32,7 +32,7 @@ namespace AstroLab
             UnlockedTabs = m_initialTabs;
         }
 
-        public bool AreInstrumentsUnlocked(NotebookFlags tabs)
+        public bool AreTabsUnlocked(NotebookFlags tabs)
         {
             return (UnlockedTabs & tabs) != 0;
         }
