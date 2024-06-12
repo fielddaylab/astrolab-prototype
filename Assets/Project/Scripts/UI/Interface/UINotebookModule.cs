@@ -32,6 +32,7 @@ namespace AstroLab
             base.Init();
          
             m_closeButton.onClick.AddListener(HandleCloseClicked);
+            m_identifyButton.onClick.AddListener(HandleIdentifyClicked);
 
             GameMgr.Events.Register(GameEvents.NotebookUnlocksChanged, HandleNotebookUnlocksChanged);
         
@@ -66,6 +67,16 @@ namespace AstroLab
         private void HandleCloseClicked()
         {
             this.Close();
+        }
+
+        private void HandleIdentifyClicked()
+        {
+            if (!FocusMgr.Instance.LastSelectedFocusable) { return; }
+
+            // var currEntry = NotebookMgr.Instance.CurrEntry;
+            FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;
+
+            GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
         }
 
         private void HandleNotebookUnlocksChanged()

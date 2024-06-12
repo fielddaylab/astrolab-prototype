@@ -988,7 +988,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -109.99997, y: -50}
+  m_SizeDelta: {x: -110, y: -69.99999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5121243148902663347
 GameObject:
@@ -1023,10 +1023,10 @@ RectTransform:
   m_Father: {fileID: 7618683885887015085}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1024, y: 660}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5413167304019505591
 CanvasRenderer:
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.36078432}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1480,6 +1480,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7618683885887015085}
     m_Modifications:
+    - target: {fileID: 1472575715003347038, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
+      propertyPath: m_Name
+      value: Identify Button
+      objectReference: {fileID: 0}
     - target: {fileID: 3040486667903104672, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
       propertyPath: m_fontSizeBase
       value: 16
@@ -1539,6 +1543,14 @@ PrefabInstance:
     - target: {fileID: 4919625825713523352, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416011398624440431, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416011398624440431, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6222732519990870755, guid: f73594e34c860bf4db0bd32a553de7c1, type: 3}
       propertyPath: m_IsActive

@@ -19,5 +19,6 @@ namespace AstroLab
         static public readonly StringHash32 NotebookUnlocksChanged = "world:notebook-unlocks-changed";
 
         static public readonly StringHash32 NotebookTabClicked = "world:notebook-tab-clicked"; // NotebookFlags
+        static public readonly StringHash32 CelestialObjIdentified = "world:celestial-obj-identified";
     }
 }

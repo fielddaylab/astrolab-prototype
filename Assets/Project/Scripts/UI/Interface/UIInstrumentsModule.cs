@@ -38,6 +38,7 @@ namespace AstroLab
             m_closeButton.onClick.AddListener(HandleCloseClicked);
 
             GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
+            GameMgr.Events.Register(GameEvents.CelestialObjIdentified, HandleCelestialObjIdentified);
         }
 
         public override void Open()
@@ -174,6 +175,11 @@ namespace AstroLab
         }
 
         private void HandleInstrumentUnlocksChanged()
+        {
+            if (m_rootGroup.alpha == 1) { Open(); }
+        }
+
+        private void HandleCelestialObjIdentified()
         {
             if (m_rootGroup.alpha == 1) { Open(); }
         }
