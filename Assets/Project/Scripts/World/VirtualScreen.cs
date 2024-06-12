@@ -14,11 +14,13 @@ public class VirtualScreen : GraphicRaycaster
     // Called by Unity when a Raycaster should raycast because it extends BaseRaycaster.
     public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
     {
-        var copyEventData = eventData;
+        var copyEventData = eventData; 
         Ray ray = eventCamera.ScreenPointToRay(copyEventData.position); // Mouse
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log("[VirtualScreen] raycast hit");
+
             if (hit.collider.transform == screenTransform)
             {
                 // Figure out where the pointer would be in the second camera based on texture position or RenderTexture.
@@ -29,10 +31,18 @@ public class VirtualScreen : GraphicRaycaster
                 copyEventData.position = virtualPos;
 
                 screenCaster.Raycast(copyEventData, resultAppendList);
+
+                Debug.Log("[VirtualScreen] redirected to " + copyEventData.position);
+
+            }
+            else
+            {
+                Debug.Log("[VirtualScreen] hit but not screen transform");
             }
         }
         else
         {
+            Debug.Log("[VirtualScreen] default cast to " + copyEventData.position);
             base.Raycast(copyEventData, resultAppendList);
         }
     }
