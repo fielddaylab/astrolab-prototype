@@ -44,7 +44,7 @@ namespace AstroLab
 
         private void HandleNotebookUnlocksChanged()
         {
-            Open();
+            if (m_rootGroup.alpha == 1) { Open(); }
         }
 
         #endregion // Handlers
