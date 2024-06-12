@@ -33,7 +33,6 @@ public class VirtualScreen : GraphicRaycaster
                 screenCaster.Raycast(copyEventData, resultAppendList);
 
                 Debug.Log("[VirtualScreen] redirected to " + copyEventData.position);
-
             }
             else
             {

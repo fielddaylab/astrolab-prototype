@@ -15,8 +15,9 @@ namespace AstroLab
         static public readonly StringHash32 UISwitched = "world:ui-switched";
         static public readonly StringHash32 FocusableClicked = "world:focusable-clicked"; // UIFocusable
 
-        static public readonly StringHash32 InstrumentUnlocksChanged = "world:instrument-unlocks-changed"; // UIFocusable
-        static public readonly StringHash32 NotebookUnlocksChanged = "world:notebook-unlocks-changed"; // UIFocusable
+        static public readonly StringHash32 InstrumentUnlocksChanged = "world:instrument-unlocks-changed";
+        static public readonly StringHash32 NotebookUnlocksChanged = "world:notebook-unlocks-changed";
 
+        static public readonly StringHash32 NotebookTabClicked = "world:notebook-tab-clicked"; // NotebookFlags
     }
 }

@@ -1762,6 +1762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1691159884497657614, guid: 8eb857d7d00317c4fb97924dee286f83, type: 3}
+      propertyPath: UnlockedTabs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7306638881204739600, guid: 8eb857d7d00317c4fb97924dee286f83, type: 3}
       propertyPath: m_Name
       value: GameMgr
