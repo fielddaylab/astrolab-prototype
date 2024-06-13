@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28aad553079cca40a120edae46a8cfe, type: 3}
+  m_Name: PiscesDwarf
+  m_EditorClassIdentifier: 
+  m_name: Pisces Dwarf Galaxy
+  m_rightAscension: {x: 1, y: 3, z: 55}
+  m_declination: {x: 21, y: 53, z: 6}
+  m_constellation: Pisces
+  m_useRadianRADecl: 0
+  m_rightAscensionRadian: 0
+  m_declinationRadian: 0
+  m_useOverrideFocusVisual: 0
+  m_overrideFocusVisual: {fileID: 0}
+  m_identifyEntryID: Galaxy 1

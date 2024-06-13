@@ -817,6 +817,7 @@ MonoBehaviour:
   m_initialSpawns:
   - {fileID: 11400000, guid: af7cf0de3c21b5e4c91187fffee66e9a, type: 2}
   - {fileID: 11400000, guid: bd85ac23f739ed94c9c1a3bb57647780, type: 2}
+  - {fileID: 11400000, guid: fd7b7023b0be13442a2d582637141764, type: 2}
   m_spawnRoot: {fileID: 1784728261}
   m_defaultFocusPrefab: {fileID: 9174583698249399925, guid: fd4053981ab369247af55533fde8d812, type: 3}
   m_focusRoot: {fileID: 74772472}
@@ -1548,6 +1549,10 @@ PrefabInstance:
     - target: {fileID: 2087379429855966241, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090377477908684753, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
+      propertyPath: m_fontSize
+      value: 26.8
       objectReference: {fileID: 0}
     - target: {fileID: 2274155454828455826, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_IsActive
