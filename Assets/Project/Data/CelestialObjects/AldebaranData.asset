@@ -15,6 +15,10 @@ MonoBehaviour:
   m_name: Aldebaran
   m_rightAscension: {x: 0, y: 0, z: 0}
   m_declination: {x: 0, y: 0, z: 0}
+  m_constellation: Taurus
   m_useRadianRADecl: 1
   m_rightAscensionRadian: 1.203931
   m_declinationRadian: 0.2881417
+  m_useOverrideFocusVisual: 0
+  m_overrideFocusVisual: {fileID: 0}
+  m_identifyEntryID: Other Star 1

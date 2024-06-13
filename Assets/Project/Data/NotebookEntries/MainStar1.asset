@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d1ef9deff1d27449a0b23221e7d25b, type: 3}
   m_Name: MainStar1
   m_EditorClassIdentifier: 
-  m_category: 6
+  m_category: 4
+  m_title: Main Sequence Star 1

@@ -15,8 +15,10 @@ MonoBehaviour:
   m_name: Beetlegeuse
   m_rightAscension: {x: 5, y: 55, z: 15}
   m_declination: {x: 7, y: 24, z: 24}
+  m_constellation: Orion
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
   m_useOverrideFocusVisual: 1
   m_overrideFocusVisual: {fileID: 6373465479689383487, guid: e2da42c415e4c3a4997acd955741ec81, type: 3}
+  m_identifyEntryID: Main Sequence Star 1

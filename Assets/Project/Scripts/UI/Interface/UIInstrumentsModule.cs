@@ -154,7 +154,7 @@ namespace AstroLab
                 + finalDecl.y + "' "
                 + finalDecl.z.ToString("F1") + "''");
 
-            m_coordConstellationReadoutText.SetText("[Not Implemented]");
+            m_coordConstellationReadoutText.SetText(currData.Constellation);
 
             m_coordinatesGroup.SetActive(true);
         }

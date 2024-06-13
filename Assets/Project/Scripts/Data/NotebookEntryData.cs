@@ -8,8 +8,10 @@ namespace AstroLab
     public class NotebookEntryData : ScriptableObject
     {
         [SerializeField] private NotebookFlags m_category;
+        [SerializeField] private string m_title;
 
         public NotebookFlags Category { get { return m_category; } }
+        public string Title { get { return m_title; } }
     }
 }
 
