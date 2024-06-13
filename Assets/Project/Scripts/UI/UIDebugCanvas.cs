@@ -26,6 +26,12 @@ namespace AstroLab
         [SerializeField] private Toggle m_nebulaeToggle;
         [SerializeField] private Toggle m_galaxiesToggle;
 
+        [Header("Locations")]
+        [SerializeField] private Button m_madisonButton;
+        [SerializeField] private Button m_northButton;
+        [SerializeField] private Button m_southButton;
+
+
         private void Start()
         {
             m_openButton.onClick.AddListener(HandleOpenClicked);
@@ -54,6 +60,28 @@ namespace AstroLab
             m_otherStarsToggle.onValueChanged.AddListener(HandleOtherStarsToggleChanged);
             m_nebulaeToggle.onValueChanged.AddListener(HandleNebulaeToggleChanged);
             m_galaxiesToggle.onValueChanged.AddListener(HandleGalaxiesToggleChanged);
+
+            m_madisonButton.onClick.AddListener(
+                delegate {
+                    WorldPositioner.Instance.PositionAtLatLongDegrees(
+                    43.0722f,
+                    89.4008f);
+                }
+            );
+            m_northButton.onClick.AddListener(
+                delegate {
+                    WorldPositioner.Instance.PositionAtLatLongVector3(
+                    new Vector3(90, 0, 0),
+                    new Vector3(0, 0, 0));
+                }
+            );
+            m_southButton.onClick.AddListener(
+                delegate {
+                    WorldPositioner.Instance.PositionAtLatLongVector3(
+                    new Vector3(-90, 0, 0),
+                    new Vector3(0, 0, 0));
+                }
+            );
         }
 
         private void HandleOpenClicked()

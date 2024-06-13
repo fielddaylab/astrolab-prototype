@@ -25,21 +25,23 @@ namespace AstroLab
             else if (Instance != this) { Destroy(this.gameObject); return; }
         }
 
-#if UNITY_EDITOR
-        [ContextMenu("(Degrees) Set Position at Lat-Long")]
-#endif // UNITY_EDITOR
-        public void PositionAtLatLong()
+        public void PositionAtLatLongVector3(Vector3 lat, Vector3 longitude)
         {
             float latDegrees = (float)CoordinateUtility.DegreesToDecimalDegrees(
-                (int)m_lat.x,
-                (int)m_lat.y,
-                m_lat.z);
+                (int)lat.x,
+                (int)lat.y,
+                lat.z);
 
             float longDegrees = (float)CoordinateUtility.DegreesToDecimalDegrees(
-                (int)m_long.x,
-                (int)m_long.y,
-                m_long.z);
+                (int)longitude.x,
+                (int)longitude.y,
+                longitude.z);
 
+            PositionAtLatLongDegrees(latDegrees, longDegrees);
+        }
+
+        public void PositionAtLatLongDegrees(float latDegrees, float longDegrees)
+        {
             var pos = CoordinateUtility.LatLongToCartesianCoordinates(latDegrees, longDegrees);
 
             pos *= (m_relativeTo.transform.localScale.x / 2);
@@ -82,6 +84,24 @@ namespace AstroLab
                 */
             }
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("(Degrees) Set Position at Lat-Long")]
+        public void MenuPositionAtLatLong()
+        {
+            float latDegrees = (float)CoordinateUtility.DegreesToDecimalDegrees(
+                (int)m_lat.x,
+                (int)m_lat.y,
+                m_lat.z);
+
+            float longDegrees = (float)CoordinateUtility.DegreesToDecimalDegrees(
+                (int)m_long.x,
+                (int)m_long.y,
+                m_long.z);
+
+            PositionAtLatLongDegrees(latDegrees, longDegrees);
+        }
+#endif // UNITY_EDITOR
 
     }
 }
