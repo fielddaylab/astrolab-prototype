@@ -103,7 +103,7 @@ namespace AstroLab {
         {
             int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
 
-            var pos = CoordinateUtility.RadiansToCartesianCoordinates(raRad, declRad);
+            var pos = CoordinateUtility.RAscDeclRadiansToCartesianCoordinates(raRad, declRad);
             toPosition.transform.position = pos * skyboxDist;
         }
 
@@ -125,7 +125,7 @@ namespace AstroLab {
         {
             int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
 
-            var pos = CoordinateUtility.RadiansToCartesianCoordinates(m_sampleRARadians, m_sampleDeclinationRadians);
+            var pos = CoordinateUtility.RAscDeclRadiansToCartesianCoordinates(m_sampleRARadians, m_sampleDeclinationRadians);
             m_sampleObj.transform.position = pos * skyboxDist;
         }
 

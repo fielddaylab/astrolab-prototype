@@ -19,7 +19,7 @@ namespace AstroLab
             double raRad = DegreeToRadian(rAsc);
             double decRad = DegreeToRadian(decl);
 
-            return RadiansToCartesianCoordinates((float)raRad, (float)decRad);
+            return RAscDeclRadiansToCartesianCoordinates((float)raRad, (float)decRad);
         }
 
         public static double DegreeToRadian(double degree)
@@ -39,7 +39,7 @@ namespace AstroLab
         /// <param name="rAsc">in degrees</param>
         /// <param name="decl"></param>
         /// <returns></returns>
-        public static Vector3 RadiansToCartesianCoordinates(float raRad, float decRad)
+        public static Vector3 LatLongRadiansToCartesianCoordinates(float raRad, float decRad)
         {
             // Note: Skybox map is rotated -90 degrees in the z from expected calculations
             
@@ -48,10 +48,39 @@ namespace AstroLab
             double y = Math.Sin(raRad) * Math.Cos(decRad);
             double z = Math.Sin(decRad);
 
+
             // Corrected
-            double correctedX = -y;
-            double correctedY = z;
-            double correctedZ = x;
+            double correctedX = x;
+            double correctedY = y;
+            double correctedZ = z;
+
+            /*
+            correctedX = -y;
+            correctedY = z;
+            correctedZ = x;
+            */
+
+            return new Vector3((float)correctedX, (float)correctedY, (float)correctedZ);
+        }
+
+        public static Vector3 RAscDeclRadiansToCartesianCoordinates(float raRad, float decRad)
+        {
+            // Note: Skybox map is rotated -90 degrees in the z from expected calculations
+
+            // Expected
+            double x = Math.Cos(raRad) * Math.Cos(decRad);
+            double y = Math.Sin(raRad) * Math.Cos(decRad);
+            double z = Math.Sin(decRad);
+
+
+            // Corrected
+            double correctedX = x;
+            double correctedY = y;
+            double correctedZ = z;
+
+            correctedX = -y;
+            correctedY = z;
+            correctedZ = x;
 
             return new Vector3((float)correctedX, (float)correctedY, (float)correctedZ);
         }
@@ -143,7 +172,7 @@ namespace AstroLab
             double latRad = DegreeToRadian(lat);
             double longRad = DegreeToRadian(longitude);
 
-            return RadiansToCartesianCoordinates((float)latRad, (float)longRad);
+            return LatLongRadiansToCartesianCoordinates((float)latRad, (float)longRad);
         }
 
         public static Vector2 CartesianToPolar(Vector3 cartPoint)
