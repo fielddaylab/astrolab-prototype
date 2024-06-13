@@ -29,6 +29,7 @@ namespace AstroLab
 
         [Header("Color Group")]
         [SerializeField] private GameObject m_colorGroup;
+        [SerializeField] private TMP_Text m_colorText;
 
         private static string UNKNOWN_OBJ_TEXT = "Unknown Object";
 
@@ -171,7 +172,11 @@ namespace AstroLab
 
         private void DisplayColor()
         {
+            var currData = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data;
+
             m_colorGroup.SetActive(true);
+
+            m_colorText.SetText(currData.Color);
         }
 
         private void HandleInstrumentUnlocksChanged()

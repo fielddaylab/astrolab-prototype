@@ -20,6 +20,7 @@ MonoBehaviour:
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
   m_identifyEntryID: Main Sequence Star 1
+  m_color: blue-ish
   m_useOverrideMat: 0
   m_overrideMat: {fileID: 0}
   m_useOverrideCOPrefab: 0

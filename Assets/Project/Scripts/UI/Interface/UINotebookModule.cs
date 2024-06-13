@@ -20,6 +20,8 @@ namespace AstroLab
 
         [SerializeField] private GameObject m_entryPage;
         [SerializeField] private TMP_Text m_entryTitleText;
+        [SerializeField] private TMP_Text m_entryColorText;
+
         [SerializeField] private GameObject m_gridPage;
 
         [SerializeField] private NotebookEntryData[] m_allEntries;
@@ -27,6 +29,7 @@ namespace AstroLab
         [SerializeField] private NotebookTab[] m_allTabs;
 
         [HideInInspector] public NotebookEntryData CurrEntry;
+
 
         private List<NotebookEntryData> m_constellationEntries = new List<NotebookEntryData>();
         private List<NotebookEntryData> m_planetEntries = new List<NotebookEntryData>();
@@ -56,7 +59,11 @@ namespace AstroLab
             }
 
             m_entryTitleText.text = string.Empty;
+            m_entryColorText.text = string.Empty;
             CurrEntry = null;
+
+            m_entryPage.SetActive(false);
+            m_gridPage.SetActive(false);
         }
 
         public override void Open()
@@ -120,6 +127,7 @@ namespace AstroLab
             CurrEntry = entryData;
 
             m_entryTitleText.SetText(entryData.Title);
+            m_entryColorText.SetText(entryData.Color);
         }
 
         #endregion // Helpers

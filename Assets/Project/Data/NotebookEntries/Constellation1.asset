@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_category: 1
   m_title: Constellation 1
+  m_color: orange

@@ -9,9 +9,11 @@ namespace AstroLab
     {
         [SerializeField] private NotebookFlags m_category;
         [SerializeField] private string m_title;
+        [SerializeField] private string m_color;
 
         public NotebookFlags Category { get { return m_category; } }
         public string Title { get { return m_title; } }
+        public string Color { get { return m_color; } }
     }
 }
 
