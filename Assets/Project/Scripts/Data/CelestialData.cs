@@ -14,9 +14,16 @@ namespace AstroLab
         [SerializeField] private bool m_useRadianRADecl;
         [SerializeField] private float m_rightAscensionRadian;
         [SerializeField] private float m_declinationRadian;
+        [SerializeField] private string m_identifyEntryID;
+
+        [Header("Visuals")]
+        [SerializeField] private bool m_useOverrideMat;
+        [SerializeField] private Material m_overrideMat;
+        [SerializeField] private bool m_useOverrideCOPrefab;
+        [SerializeField] private GameObject m_overrideCOPrefab;
         [SerializeField] private bool m_useOverrideFocusVisual;
         [SerializeField] private GameObject m_overrideFocusVisual;
-        [SerializeField] private string m_identifyEntryID;
+
 
         public string Name { get { return m_name; } }
         public Vector3 RA { get { return m_rightAscension; } }
@@ -25,6 +32,10 @@ namespace AstroLab
         public bool UseRadianRADecl { get { return m_useRadianRADecl; } }
         public float RARad { get { return m_rightAscensionRadian; } }
         public float DeclRad { get { return m_declinationRadian; } }
+        public bool UseOverrideMat { get { return m_useOverrideMat; } }
+        public Material OverrideMat { get { return m_overrideMat; } }
+        public bool UserOverrideCOPrefab { get { return m_useOverrideCOPrefab; } }
+        public GameObject OverrideCOPrefab { get { return m_overrideCOPrefab; } }
         public bool UseOverrideFocusVisual { get { return m_useOverrideFocusVisual; } }
         public GameObject OverrideFocusVisual { get { return m_overrideFocusVisual; } }
         public string IdentifyEntryID { get { return m_identifyEntryID; } }

@@ -6,6 +6,8 @@ namespace AstroLab
 {
     public class WorldPositioner : MonoBehaviour
     {
+        public static WorldPositioner Instance;
+
         [SerializeField] private GameObject m_toPosition;
         [SerializeField] private GameObject m_relativeTo;
         [SerializeField] private GameObject m_plane;
@@ -17,10 +19,16 @@ namespace AstroLab
         [SerializeField] private Vector3 m_lat;
         [SerializeField] private Vector3 m_long;
 
-#if UNITY_EDITOR
+        private void Awake()
+        {
+            if (Instance == null) { Instance = this; }
+            else if (Instance != this) { Destroy(this.gameObject); return; }
+        }
 
+#if UNITY_EDITOR
         [ContextMenu("(Degrees) Set Position at Lat-Long")]
-        private void PositionAtLatLong()
+#endif // UNITY_EDITOR
+        public void PositionAtLatLong()
         {
             float latDegrees = (float)CoordinateUtility.DegreesToDecimalDegrees(
                 (int)m_lat.x,
@@ -75,6 +83,5 @@ namespace AstroLab
             }
         }
 
-#endif // UNITY_EDITOR
     }
 }

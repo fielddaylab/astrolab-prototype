@@ -39,10 +39,25 @@ namespace AstroLab {
 
             foreach(var data in m_initialSpawns)
             {
+                GameObject adjustedPrefab = m_celestialObjPrefab;
+                // Apply prefab overrides
+                if (data.UserOverrideCOPrefab)
+                {
+                    adjustedPrefab = data.OverrideCOPrefab;
+                }
+
                 // create object
-                var newObj = Instantiate(m_celestialObjPrefab, m_spawnRoot).GetComponent<CelestialObject>();
+                var newObj = Instantiate(adjustedPrefab, m_spawnRoot).GetComponent<CelestialObject>();
                 newObj.Populate(data);
                 newObj.gameObject.name = "CO: " + data.Name;
+                 
+                // Apply material overrides
+                if (data.UseOverrideMat)
+                {
+                    var mats = newObj.MeshRenderer.sharedMaterials;
+                    mats[0] = data.OverrideMat;
+                    newObj.MeshRenderer.sharedMaterials = mats;
+                }
 
                 // create focus
                 UIFocusable newFocusable = newObj.GetComponent<UIFocusable>();

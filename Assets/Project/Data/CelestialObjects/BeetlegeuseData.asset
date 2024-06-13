@@ -19,6 +19,10 @@ MonoBehaviour:
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
-  m_useOverrideFocusVisual: 1
-  m_overrideFocusVisual: {fileID: 6373465479689383487, guid: e2da42c415e4c3a4997acd955741ec81, type: 3}
   m_identifyEntryID: Main Sequence Star 1
+  m_useOverrideMat: 0
+  m_overrideMat: {fileID: 0}
+  m_useOverrideCOPrefab: 0
+  m_overrideCOPrefab: {fileID: 0}
+  m_useOverrideFocusVisual: 0
+  m_overrideFocusVisual: {fileID: 0}

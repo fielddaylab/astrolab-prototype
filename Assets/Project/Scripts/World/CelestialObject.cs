@@ -10,6 +10,9 @@ namespace AstroLab
 
         public CelestialData Data { get { return m_data; } }
 
+        public Renderer MeshRenderer;
+        public MeshFilter MeshFilter;
+
         public bool Identified;
 
         public void Populate(CelestialData data, bool setInitialPos = true)

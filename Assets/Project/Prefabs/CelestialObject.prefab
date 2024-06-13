@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72d35ba667ed78b42bb3ce09619a6846, type: 2}
+  - {fileID: 2100000, guid: a1a5a45cddb055e4182f9f79f7f6cee7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e42c6c5be13d4849bb2badd81447abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeshRenderer: {fileID: 9000052290745090737}
+  MeshFilter: {fileID: 29912049904193930}
   Identified: 0
 --- !u!114 &5956316772689645221
 MonoBehaviour:
@@ -124,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a5709eedfea8b47a8508d61ee8c119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_focusVisual: {fileID: 0}
+  Renderer: {fileID: 0}
+  CelestialObj: {fileID: 0}
