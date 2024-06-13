@@ -21,8 +21,8 @@ MonoBehaviour:
   m_declinationRadian: 0.2881417
   m_identifyEntryID: Other Star 1
   m_color: red-ish
-  m_useOverrideMat: 0
-  m_overrideMat: {fileID: 0}
+  m_useOverrideMat: 1
+  m_overrideMat: {fileID: 2100000, guid: 72d35ba667ed78b42bb3ce09619a6846, type: 2}
   m_useOverrideCOPrefab: 0
   m_overrideCOPrefab: {fileID: 0}
   m_useOverrideFocusVisual: 1

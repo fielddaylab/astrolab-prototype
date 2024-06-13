@@ -22,7 +22,7 @@ MonoBehaviour:
   m_identifyEntryID: Galaxy 1
   m_color: white-ish
   m_useOverrideMat: 1
-  m_overrideMat: {fileID: 2100000, guid: c9faa039d9b123a48905f10f62ddd1da, type: 2}
+  m_overrideMat: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_useOverrideCOPrefab: 0
   m_overrideCOPrefab: {fileID: 0}
   m_useOverrideFocusVisual: 0
