@@ -11,7 +11,7 @@ namespace AstroLab
 
         [SerializeField] private Transform m_camRoot;
         [SerializeField] private Transform m_playerRoot;
-        [SerializeField] private bool m_enableMouseControls;
+        public bool EnableMouseControls;
 
         [SerializeField] private RenderTexture m_renderTex;
         [SerializeField] private Vector2Int m_defaultRenderTexDims;
@@ -99,7 +99,7 @@ namespace AstroLab
 
         private void ProcessLook()
         {
-            if (m_enableMouseControls)
+            if (EnableMouseControls)
             {
                 ProcessMouseLook();
             }
@@ -188,7 +188,7 @@ namespace AstroLab
 
         private void ProcessZoom()
         {
-            if (m_enableMouseControls)
+            if (EnableMouseControls)
             {
                 ProcessMouseZoom();
             }
