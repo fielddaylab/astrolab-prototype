@@ -15,6 +15,8 @@ namespace AstroLab
 
         public CelestialObject CelestialObj;
 
+        public string ID;
+
         #region Unity Callbacks
 
         public void Init(CelestialObject celObj)
@@ -22,6 +24,7 @@ namespace AstroLab
             Renderer = GetComponent<Renderer>();
 
             CelestialObj = celObj;
+            ID = celObj.name;
         }
 
         private void OnBecameVisible()

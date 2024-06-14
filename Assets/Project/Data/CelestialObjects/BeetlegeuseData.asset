@@ -21,7 +21,8 @@ MonoBehaviour:
   m_declinationRadian: 0
   m_identifyEntryID: Main Sequence Star 1
   m_color: blue-ish
-  m_useOverrideMat: 1
+  m_represent2D: {fileID: 21300000, guid: d255e7dd7dabbe949b7e56c2f3e558f4, type: 3}
+  m_useOverrideMat: 0
   m_overrideMat: {fileID: 2100000, guid: c9faa039d9b123a48905f10f62ddd1da, type: 2}
   m_useOverrideCOPrefab: 0
   m_overrideCOPrefab: {fileID: 0}

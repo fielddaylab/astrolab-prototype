@@ -10,9 +10,11 @@ namespace AstroLab
     {
         public UIFocusable Target;
         public RectTransform Rect;
+        public Image Represent2D;
+        public Image Outline;
         public Button Button;
 
-        public void Init(UIFocusable target)
+        public void Init(UIFocusable target, Sprite represent2D)
         {
             if (Button)
             {
@@ -32,6 +34,14 @@ namespace AstroLab
 
             Target.BecameVisible += HandleTargetBecameVisible;
             Target.BecameInvisible += HandleTargetBecameInvisible;
+
+            Represent2D.sprite = represent2D;
+            if (!represent2D) { Represent2D.enabled = false; }
+
+            Outline.enabled = false;
+
+            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
+            GameMgr.Events.Register<UIFocusable>(GameEvents.FocusableClicked, HandleFocusableClicked);
         }
 
         private void LateUpdate()
@@ -56,6 +66,21 @@ namespace AstroLab
         {
             Debug.Log("Clicked on " + Target.CelestialObj.Data.Name + "!");
             GameMgr.Events.Dispatch(GameEvents.FocusableClicked, Target);
+
+            Outline.enabled = true;
+        }
+
+        private void HandleUnfocus()
+        {
+            Outline.enabled = false;
+        }
+
+        private void HandleFocusableClicked(UIFocusable focusable)
+        {
+            if (!focusable.ID.Equals(this.Target.ID))
+            {
+                Outline.enabled = false;
+            }
         }
     }
 }

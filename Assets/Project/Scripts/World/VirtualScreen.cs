@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using static UnityEngine.EventSystems.PointerEventData;
 using UnityEngine.UIElements;
+using AstroLab;
 
 public class VirtualScreen : GraphicRaycaster
 {

@@ -20,6 +20,7 @@ namespace AstroLab
         [SerializeField] private string m_color;
 
         [Header("Visuals")]
+        [SerializeField] private Sprite m_represent2D;
         [SerializeField] private bool m_useOverrideMat;
         [SerializeField] private Material m_overrideMat;
         [SerializeField] private bool m_useOverrideCOPrefab;
@@ -35,6 +36,7 @@ namespace AstroLab
         public bool UseRadianRADecl { get { return m_useRadianRADecl; } }
         public float RARad { get { return m_rightAscensionRadian; } }
         public float DeclRad { get { return m_declinationRadian; } }
+        public Sprite Represent2D { get { return m_represent2D; } }
         public bool UseOverrideMat { get { return m_useOverrideMat; } }
         public Material OverrideMat { get { return m_overrideMat; } }
         public bool UserOverrideCOPrefab { get { return m_useOverrideCOPrefab; } }

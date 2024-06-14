@@ -76,8 +76,6 @@ namespace AstroLab
                 m_renderTex.width = Camera.main.pixelWidth;
                 m_renderTex.height = Camera.main.pixelHeight;
                 m_renderTex.Create();
-
-                // m_focusCanvas.scaleFactor = Camera.main.pixelWidth / m_defaultRenderTexDims.x;
             }
         }
 

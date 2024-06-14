@@ -47,6 +47,8 @@ namespace AstroLab
 
             GameMgr.Events.Register(GameEvents.NotebookUnlocksChanged, HandleNotebookUnlocksChanged);
             GameMgr.Events.Register<NotebookFlags>(GameEvents.NotebookTabClicked, HandleNotebookTabClicked);
+            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
+
 
             foreach (var entry in m_allEntries)
             {
@@ -116,6 +118,11 @@ namespace AstroLab
 
             m_entryPage.SetActive(true);
             m_gridPage.SetActive(false);
+        }
+
+        private void HandleUnfocus()
+        {
+            // this.Close();
         }
 
         #endregion // Handlers

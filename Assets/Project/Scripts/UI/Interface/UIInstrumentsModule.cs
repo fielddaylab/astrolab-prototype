@@ -40,6 +40,7 @@ namespace AstroLab
 
             GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
             GameMgr.Events.Register(GameEvents.CelestialObjIdentified, HandleCelestialObjIdentified);
+            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
         }
 
         public override void Open()
@@ -103,6 +104,15 @@ namespace AstroLab
         private void HandleCloseClicked()
         {
             this.Close();
+        }
+
+        private void HandleUnfocus()
+        {
+            bool wasOpen = m_rootGroup.alpha == 1;
+
+            this.Close();
+
+            if (wasOpen) { this.Open(); }
         }
 
         #endregion // Handlers

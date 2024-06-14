@@ -84,7 +84,7 @@ namespace AstroLab {
 
             if (newFocus)
             {
-                newFocus.Init(newFocusable);
+                newFocus.Init(newFocusable, data.Represent2D);
             }
         }
 
