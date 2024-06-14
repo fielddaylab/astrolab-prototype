@@ -85,6 +85,7 @@ namespace AstroLab
 
             m_entryPage.SetActive(false);
             m_gridPage.SetActive(true);
+            m_gridButton.gameObject.SetActive(false);
             m_prevButton.gameObject.SetActive(false);
             m_nextButton.gameObject.SetActive(false);
         }
@@ -130,16 +131,17 @@ namespace AstroLab
 
         private void HandleNotebookTabClicked(NotebookFlags category)
         {
-            if ((category & NotebookFlags.Constellations) != 0) { PopulateEntryPage(m_constellationEntries[0]); }
-            if ((category & NotebookFlags.Planets) != 0) { PopulateEntryPage(m_planetEntries[0]); }
-            if ((category & NotebookFlags.MainSequenceStars) != 0) { PopulateEntryPage(m_mainStarEntries[0]); }
-            if ((category & NotebookFlags.OtherStars) != 0) { PopulateEntryPage(m_otherStarEntries[0]); }
-            if ((category & NotebookFlags.Nebulae) != 0) { PopulateEntryPage(m_nebulaEntries[0]); }
-            if ((category & NotebookFlags.Galaxies) != 0) { PopulateEntryPage(m_galaxyEntries[0]); }
+            if ((category & NotebookFlags.Constellations) != 0) { PopulateEntryPage(m_constellationEntries[m_currConstellationEntryIndex]); }
+            if ((category & NotebookFlags.Planets) != 0) { PopulateEntryPage(m_planetEntries[m_currPlanetEntryIndex]); }
+            if ((category & NotebookFlags.MainSequenceStars) != 0) { PopulateEntryPage(m_mainStarEntries[m_currMainStarEntryIndex]); }
+            if ((category & NotebookFlags.OtherStars) != 0) { PopulateEntryPage(m_otherStarEntries[m_currOtherStarEntryIndex]); }
+            if ((category & NotebookFlags.Nebulae) != 0) { PopulateEntryPage(m_nebulaEntries[m_currNebulaEntryIndex]); }
+            if ((category & NotebookFlags.Galaxies) != 0) { PopulateEntryPage(m_galaxyEntries[m_currGalaxyEntryIndex]); }
 
             m_entryPage.SetActive(true);
             m_gridPage.SetActive(false);
 
+            m_gridButton.gameObject.SetActive(true);
             m_prevButton.gameObject.SetActive(true);
             m_nextButton.gameObject.SetActive(true);
 
@@ -155,6 +157,8 @@ namespace AstroLab
         {
             m_gridPage.SetActive(true);
             m_entryPage.SetActive(false);
+
+            m_gridButton.gameObject.SetActive(false);
             m_prevButton.gameObject.SetActive(false);
             m_nextButton.gameObject.SetActive(false);
         }
