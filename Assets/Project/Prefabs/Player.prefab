@@ -117,9 +117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_camRoot: {fileID: 1722963813957111861}
+  m_playerRoot: {fileID: 1722963814198416462}
   m_enableMouseControls: 0
   m_renderTex: {fileID: 8400000, guid: 7ef02e9d81fb1f64b85630eeb15d94c9, type: 2}
   m_defaultRenderTexDims: {x: 1024, y: 660}
+  m_focusCanvas: {fileID: 0}
   m_lookThreshold: 0.2
   m_lookRapidThreshold: 0.075
   m_lookSpeed: 20

@@ -14,12 +14,23 @@ namespace AstroLab
 
         [SerializeField] private TMP_Text m_objName;
 
+        [SerializeField] private CameraController m_camController;
+
+        [Header("Coordinate Input Group")]
+        [SerializeField] private GameObject m_coordinateInputGroup;
+        [SerializeField] private TMP_InputField m_coordRAHrsInput;
+        [SerializeField] private TMP_InputField m_coordRAMinsInput;
+        [SerializeField] private TMP_InputField m_coordRASecsInput;
+        [SerializeField] private TMP_InputField m_coordDeclDegreesInput;
+        [SerializeField] private TMP_InputField m_coordDeclMinsInput;
+        [SerializeField] private TMP_InputField m_coordDeclSecsInput;
+        [SerializeField] private Button m_coordSubmitButton;
+
         [Header("Coordinate Group")]
         [SerializeField] private GameObject m_coordinatesGroup;
         [SerializeField] private TMP_Text m_coordRAReadoutText;
         [SerializeField] private TMP_Text m_coordDeclReadoutText;
         [SerializeField] private TMP_Text m_coordConstellationReadoutText;
-
 
         [Header("Photometer Group")]
         [SerializeField] private GameObject m_photometerGroup;
@@ -37,6 +48,7 @@ namespace AstroLab
         {
             base.Init();
             m_closeButton.onClick.AddListener(HandleCloseClicked);
+            m_coordSubmitButton.onClick.AddListener(HandleCoordSubmitClicked);
 
             GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
             GameMgr.Events.Register(GameEvents.CelestialObjIdentified, HandleCelestialObjIdentified);
@@ -54,8 +66,13 @@ namespace AstroLab
                 m_photometerGroup.SetActive(false);
                 m_spectrometerGroup.SetActive(false);
                 m_colorGroup.SetActive(false);
+
+                // Display coordinate input UI
+                DisplayCoordInputGroup();
                 return;
-            } 
+            }
+
+            m_coordinateInputGroup.SetActive(false);
 
             if (InstrumentsMgr.Instance.AreInstrumentsUnlocked(InstrumentFlags.EquatorialCoords))
             {
@@ -115,6 +132,28 @@ namespace AstroLab
             if (wasOpen) { this.Open(); }
         }
 
+        private void HandleCoordSubmitClicked() 
+        {
+            var ra = new Vector3(
+                m_coordRAHrsInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordRAHrsInput.text),
+                m_coordRAMinsInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordRAMinsInput.text),
+                m_coordRASecsInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordRASecsInput.text)
+                );
+
+            var decl = new Vector3(
+            m_coordDeclDegreesInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordDeclDegreesInput.text),
+            m_coordDeclMinsInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordDeclMinsInput.text),
+            m_coordDeclSecsInput.text.Equals(string.Empty) ? 0 : float.Parse(m_coordDeclSecsInput.text)
+            );
+            
+            int skyboxDist = FindObjectOfType<GameConsts>().SkyboxDist;
+
+            float raDegrees = (float)CoordinateUtility.RAToDegrees((int)ra.x, (int)ra.y, ra.z);
+            float declDegrees = (float)CoordinateUtility.DeclensionToDecimalDegrees((int)decl.x, (int)decl.y, decl.z);
+            var pos = CoordinateUtility.RAscDeclDegreesToCartesianCoordinates(raDegrees, declDegrees) * skyboxDist;
+            m_camController.TryLook(pos);
+        }
+
         #endregion // Handlers
 
         private void DisplayName()
@@ -134,6 +173,11 @@ namespace AstroLab
             {
                 m_objName.text = string.Empty;
             }
+        }
+
+        private void DisplayCoordInputGroup()
+        {
+            m_coordinateInputGroup.SetActive(true);
         }
 
         private void DisplayEquatorialCoords()

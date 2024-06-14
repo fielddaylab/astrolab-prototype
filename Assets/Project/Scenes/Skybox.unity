@@ -1075,6 +1075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 0}
   CelestialObj: {fileID: 0}
+  ID: 
 --- !u!1 &1295278117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 0}
   CelestialObj: {fileID: 0}
+  ID: 
 --- !u!1 &1676183445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1389,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754450538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1722963813782471932, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
+  m_PrefabInstance: {fileID: 1722963814604317973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c390a73b918b45d478539952ed8cd57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1784728260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2059,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -140
       objectReference: {fileID: 0}
+    - target: {fileID: 7313260322272067138, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
+      propertyPath: m_camController
+      value: 
+      objectReference: {fileID: 1754450538}
     - target: {fileID: 7378134296748507020, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

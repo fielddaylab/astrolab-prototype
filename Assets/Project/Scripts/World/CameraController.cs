@@ -10,6 +10,7 @@ namespace AstroLab
         private Camera m_camera;
 
         [SerializeField] private Transform m_camRoot;
+        [SerializeField] private Transform m_playerRoot;
         [SerializeField] private bool m_enableMouseControls;
 
         [SerializeField] private RenderTexture m_renderTex;
@@ -77,6 +78,14 @@ namespace AstroLab
                 m_renderTex.height = Camera.main.pixelHeight;
                 m_renderTex.Create();
             }
+        }
+
+        public void TryLook(Vector3 lookPos)
+        {
+            m_camRoot.LookAt(lookPos, m_playerRoot.up);
+            var angles = this.transform.localEulerAngles;
+            angles.x = 0;
+            this.transform.localEulerAngles = angles;
         }
 
         #region Input Processing
