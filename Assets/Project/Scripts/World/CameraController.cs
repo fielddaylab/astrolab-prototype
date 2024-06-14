@@ -12,6 +12,8 @@ namespace AstroLab
         [SerializeField] private Transform m_camRoot;
         [SerializeField] private bool m_enableMouseControls;
 
+        [SerializeField] private RenderTexture m_renderTex;
+
         [Space(5)]
         [Header("Look")]
         [SerializeField] private float m_lookThreshold; // margin from edge of screen (normalized)
@@ -51,10 +53,24 @@ namespace AstroLab
 
         private void Update()
         {
+            UpdateRenderTexture();
+
             ProcessInputs();
         }
 
         #endregion // Unity Callbacks
+
+        private void UpdateRenderTexture()
+        {
+            if (m_renderTex.width != Camera.main.pixelWidth || m_renderTex.height != Camera.main.pixelHeight)
+            {
+                Debug.Log("Updating render texture!");
+                m_renderTex.Release();
+                m_renderTex.width = Camera.main.pixelWidth;
+                m_renderTex.height = Camera.main.pixelHeight;
+                m_renderTex.Create();
+            }
+        }
 
         #region Input Processing
 

@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e74c46d7973ab48a5e4fc9da3e2798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_category: 1
+  Category: 8
   m_tabButton: {fileID: 8782046048196336686}
 --- !u!1 &5501079832527068549
 GameObject:
