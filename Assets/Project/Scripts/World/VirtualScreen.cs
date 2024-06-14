@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.PointerEventData;
+using UnityEngine.UIElements;
 
 public class VirtualScreen : GraphicRaycaster
 {
@@ -14,7 +16,29 @@ public class VirtualScreen : GraphicRaycaster
     // Called by Unity when a Raycaster should raycast because it extends BaseRaycaster.
     public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
     {
-        var copyEventData = eventData; 
+        PointerEventData copyEventData = new PointerEventData(EventSystem.current);
+        copyEventData.eligibleForClick = false;
+
+        copyEventData.pointerId = eventData.pointerId;
+        copyEventData.position = eventData.position;
+        copyEventData.delta = eventData.delta;
+        copyEventData.pressPosition = eventData.pressPosition;
+        copyEventData.clickTime = eventData.clickTime;
+        copyEventData.clickCount = eventData.clickCount;
+
+        copyEventData.scrollDelta = eventData.scrollDelta;
+        copyEventData.useDragThreshold = eventData.useDragThreshold;
+        copyEventData.dragging = eventData.dragging;
+        copyEventData.button = eventData.button;
+
+        copyEventData.pressure = eventData.pressure;
+        copyEventData.tangentialPressure = eventData.tangentialPressure;
+        copyEventData.altitudeAngle = eventData.altitudeAngle;
+        copyEventData.azimuthAngle = eventData.azimuthAngle;
+        copyEventData.twist = eventData.twist;
+        copyEventData.radius = eventData.radius;
+        copyEventData.radiusVariance = eventData.radiusVariance;
+
         Ray ray = eventCamera.ScreenPointToRay(copyEventData.position); // Mouse
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))

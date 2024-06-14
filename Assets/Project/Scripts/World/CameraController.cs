@@ -14,6 +14,7 @@ namespace AstroLab
 
         [SerializeField] private RenderTexture m_renderTex;
         [SerializeField] private Vector2Int m_defaultRenderTexDims;
+        [SerializeField] private Canvas m_focusCanvas;
 
         [Space(5)]
         [Header("Look")]
@@ -75,6 +76,8 @@ namespace AstroLab
                 m_renderTex.width = Camera.main.pixelWidth;
                 m_renderTex.height = Camera.main.pixelHeight;
                 m_renderTex.Create();
+
+                // m_focusCanvas.scaleFactor = Camera.main.pixelWidth / m_defaultRenderTexDims.x;
             }
         }
 
