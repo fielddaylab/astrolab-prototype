@@ -28,13 +28,10 @@ namespace AstroLab
 
         private bool m_initialized = false;
 
-        public void Awake()
-        {
-            InitializeRegistered();
-        }
-
         private void Start()
         {
+            InitializeRegistered();
+
             CloseAll();
 
             if (m_initialUI)

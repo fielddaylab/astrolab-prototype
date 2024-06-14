@@ -36,8 +36,11 @@ namespace AstroLab {
                 Destroy(this.gameObject);
                 return;
             }
+        }
 
-            foreach(var data in m_initialSpawns)
+        private void Start()
+        {
+            foreach (var data in m_initialSpawns)
             {
                 GameObject adjustedPrefab = m_celestialObjPrefab;
                 // Apply prefab overrides
@@ -50,7 +53,7 @@ namespace AstroLab {
                 var newObj = Instantiate(adjustedPrefab, m_spawnRoot).GetComponent<CelestialObject>();
                 newObj.Populate(data);
                 newObj.gameObject.name = "CO: " + data.Name;
-                 
+
                 // Apply material overrides
                 if (data.UseOverrideMat)
                 {

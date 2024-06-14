@@ -36,12 +36,12 @@ namespace AstroLab
             m_techButton.onClick.AddListener(HandleTechClicked);
             m_instrumentButton.onClick.AddListener(HandleInstrumentsClicked);
 
-            GameMgr.Events.Register<UIFocusable>(GameEvents.FocusableClicked, HandleFocusableClicked);
         }
 
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = GameMgr.Instance.InterfaceCamera;
+            GameMgr.Events.Register<UIFocusable>(GameEvents.FocusableClicked, HandleFocusableClicked);
         }
 
         #endregion // Unity Callbacks
