@@ -54,11 +54,15 @@ namespace AstroLab
 
         private void HandleTargetBecameVisible(object sender, EventArgs args)
         {
+            Debug.Log("[UIFocus] target " + Target.gameObject.name + " became visible");
+
             this.gameObject.SetActive(true);
         }
 
         private void HandleTargetBecameInvisible(object sender, EventArgs args)
         {
+            Debug.Log("[UIFocus] target " + Target.gameObject.name + " became invisible");
+
             this.gameObject.SetActive(false);
         }
 

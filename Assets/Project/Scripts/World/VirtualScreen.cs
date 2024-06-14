@@ -44,7 +44,7 @@ public class VirtualScreen : GraphicRaycaster
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("[VirtualScreen] raycast hit");
+            //Debug.Log("[VirtualScreen] raycast hit");
 
             if (hit.collider.transform == screenTransform)
             {
@@ -57,16 +57,16 @@ public class VirtualScreen : GraphicRaycaster
 
                 screenCaster.Raycast(copyEventData, resultAppendList);
 
-                Debug.Log("[VirtualScreen] redirected to " + copyEventData.position);
+                //Debug.Log("[VirtualScreen] redirected to " + copyEventData.position);
             }
             else
             {
-                Debug.Log("[VirtualScreen] hit but not screen transform");
+                //Debug.Log("[VirtualScreen] hit but not screen transform");
             }
         }
         else
         {
-            Debug.Log("[VirtualScreen] default cast to " + copyEventData.position);
+            // Debug.Log("[VirtualScreen] default cast to " + copyEventData.position);
             base.Raycast(copyEventData, resultAppendList);
         }
     }
