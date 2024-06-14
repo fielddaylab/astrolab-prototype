@@ -30,7 +30,6 @@ namespace AstroLab
 
         [HideInInspector] public NotebookEntryData CurrEntry;
 
-
         private List<NotebookEntryData> m_constellationEntries = new List<NotebookEntryData>();
         private List<NotebookEntryData> m_planetEntries = new List<NotebookEntryData>();
         private List<NotebookEntryData> m_mainStarEntries = new List<NotebookEntryData>();
@@ -38,12 +37,25 @@ namespace AstroLab
         private List<NotebookEntryData> m_nebulaEntries = new List<NotebookEntryData>();
         private List<NotebookEntryData> m_galaxyEntries = new List<NotebookEntryData>();
 
+        private int m_currConstellationEntryIndex;
+        private int m_currPlanetEntryIndex;
+        private int m_currMainStarEntryIndex;
+        private int m_currOtherStarEntryIndex;
+        private int m_currNebulaEntryIndex;
+        private int m_currGalaxyEntryIndex;
+
+        private NotebookFlags m_currCategory;
+
         public override void Init()
         {
             base.Init();
          
             m_closeButton.onClick.AddListener(HandleCloseClicked);
             m_identifyButton.onClick.AddListener(HandleIdentifyClicked);
+
+            m_gridButton.onClick.AddListener(HandleGridClicked);
+            m_prevButton.onClick.AddListener(HandlePrevClicked);
+            m_nextButton.onClick.AddListener(HandleNextClicked);
 
             GameMgr.Events.Register(GameEvents.NotebookUnlocksChanged, HandleNotebookUnlocksChanged);
             GameMgr.Events.Register<NotebookFlags>(GameEvents.NotebookTabClicked, HandleNotebookTabClicked);
@@ -60,12 +72,21 @@ namespace AstroLab
                 if ((entry.Category & NotebookFlags.Galaxies) != 0) { m_galaxyEntries.Add(entry); }
             }
 
+            m_currConstellationEntryIndex = 0;
+            m_currPlanetEntryIndex = 0;
+            m_currMainStarEntryIndex = 0;
+            m_currOtherStarEntryIndex = 0;
+            m_currNebulaEntryIndex = 0;
+            m_currGalaxyEntryIndex = 0;
+
             m_entryTitleText.text = string.Empty;
             m_entryColorText.text = string.Empty;
             CurrEntry = null;
 
             m_entryPage.SetActive(false);
-            m_gridPage.SetActive(false);
+            m_gridPage.SetActive(true);
+            m_prevButton.gameObject.SetActive(false);
+            m_nextButton.gameObject.SetActive(false);
         }
 
         public override void Open()
@@ -118,11 +139,80 @@ namespace AstroLab
 
             m_entryPage.SetActive(true);
             m_gridPage.SetActive(false);
+
+            m_prevButton.gameObject.SetActive(true);
+            m_nextButton.gameObject.SetActive(true);
+
+            m_currCategory = category;
         }
 
         private void HandleUnfocus()
         {
             // this.Close();
+        }
+
+        private void HandleGridClicked()
+        {
+            m_gridPage.SetActive(true);
+            m_entryPage.SetActive(false);
+            m_prevButton.gameObject.SetActive(false);
+            m_nextButton.gameObject.SetActive(false);
+        }
+
+        private void HandlePrevClicked()
+        {
+            SwitchPage(-1);
+        }
+
+        private void HandleNextClicked()
+        {
+            SwitchPage(1);
+        }
+
+        private void SwitchPage(int delta)
+        {
+            if ((m_currCategory & NotebookFlags.Constellations) != 0) {
+                if (m_currConstellationEntryIndex + delta > -1 && m_currConstellationEntryIndex + delta < m_constellationEntries.Count)
+                {
+                    PopulateEntryPage(m_constellationEntries[m_currConstellationEntryIndex + delta]);
+                    m_currConstellationEntryIndex += delta;
+                }
+            }
+            if ((m_currCategory & NotebookFlags.Planets) != 0) {
+                if (m_currPlanetEntryIndex + delta > -1 && m_currPlanetEntryIndex + delta < m_planetEntries.Count)
+                {
+                    PopulateEntryPage(m_planetEntries[m_currPlanetEntryIndex + delta]);
+                    m_currPlanetEntryIndex += delta;
+                }
+            }
+            if ((m_currCategory & NotebookFlags.MainSequenceStars) != 0) {
+                if (m_currMainStarEntryIndex + delta > -1 && m_currMainStarEntryIndex + delta < m_mainStarEntries.Count)
+                {
+                    PopulateEntryPage(m_mainStarEntries[m_currMainStarEntryIndex + delta]);
+                    m_currMainStarEntryIndex += delta;
+                }
+            }
+            if ((m_currCategory & NotebookFlags.OtherStars) != 0) {
+                if (m_currOtherStarEntryIndex + delta > -1 && m_currOtherStarEntryIndex + delta < m_otherStarEntries.Count)
+                {
+                    PopulateEntryPage(m_otherStarEntries[m_currOtherStarEntryIndex + delta]);
+                    m_currOtherStarEntryIndex += delta;
+                }
+            }
+            if ((m_currCategory & NotebookFlags.Nebulae) != 0) {
+                if (m_currNebulaEntryIndex + delta > -1 && m_currNebulaEntryIndex + delta < m_nebulaEntries.Count)
+                {
+                    PopulateEntryPage(m_nebulaEntries[m_currNebulaEntryIndex + delta]);
+                    m_currNebulaEntryIndex += delta;
+                }
+            }
+            if ((m_currCategory & NotebookFlags.Galaxies) != 0) {
+                if (m_currGalaxyEntryIndex + delta > -1 && m_currGalaxyEntryIndex + delta < m_galaxyEntries.Count)
+                {
+                    PopulateEntryPage(m_galaxyEntries[m_currGalaxyEntryIndex + delta]);
+                    m_currGalaxyEntryIndex += delta;
+                }
+            }
         }
 
         #endregion // Handlers
