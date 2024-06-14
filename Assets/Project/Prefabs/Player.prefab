@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722963813782471922}
   m_LocalRotation: {x: -0.07758909, y: 0, z: 0, w: 0.99698544}
-  m_LocalPosition: {x: 0, y: -1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camRoot: {fileID: 1722963813957111861}
   m_playerRoot: {fileID: 1722963814198416462}
-  m_enableMouseControls: 0
+  EnableMouseControls: 0
   m_renderTex: {fileID: 8400000, guid: 7ef02e9d81fb1f64b85630eeb15d94c9, type: 2}
   m_defaultRenderTexDims: {x: 1024, y: 660}
   m_focusCanvas: {fileID: 0}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722963813957111818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.875, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722963814198416463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
