@@ -13,6 +13,7 @@ namespace AstroLab
         [SerializeField] private bool m_enableMouseControls;
 
         [SerializeField] private RenderTexture m_renderTex;
+        [SerializeField] private Vector2Int m_defaultRenderTexDims;
 
         [Space(5)]
         [Header("Look")]
@@ -49,6 +50,11 @@ namespace AstroLab
             {
                 GetComponent<Skybox>().material = m_fallbackMat;
             }
+
+            m_renderTex.Release();
+            m_renderTex.width = m_defaultRenderTexDims.x;
+            m_renderTex.height = m_defaultRenderTexDims.y;
+            m_renderTex.Create();
         }
 
         private void Update()
