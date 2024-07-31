@@ -14,6 +14,7 @@ namespace AstroLab
         Notebook,
         Tech,
         Instruments,
+        Documents
     }
 
 

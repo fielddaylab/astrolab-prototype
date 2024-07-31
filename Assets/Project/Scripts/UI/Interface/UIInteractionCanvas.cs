@@ -14,6 +14,7 @@ namespace AstroLab
         [SerializeField] private Button m_notebookButton;
         [SerializeField] private Button m_techButton;
         [SerializeField] private Button m_instrumentButton;
+        [SerializeField] private Button m_documentsButton;
 
         [Space(5)]
         [Header("Orientation Sliders")]
@@ -35,7 +36,7 @@ namespace AstroLab
             m_notebookButton.onClick.AddListener(HandleNotebookClicked);
             m_techButton.onClick.AddListener(HandleTechClicked);
             m_instrumentButton.onClick.AddListener(HandleInstrumentsClicked);
-
+            m_documentsButton.onClick.AddListener(HandleDocumentsClicked);
         }
 
         private void Start()
@@ -66,6 +67,10 @@ namespace AstroLab
         private void HandleInstrumentsClicked()
         {
             m_hub.OpenUI(UIID.Instruments);
+        }
+
+        private void HandleDocumentsClicked() {
+            m_hub.OpenUI(UIID.Documents);
         }
 
         private void HandleFocusableClicked(UIFocusable focusable)
