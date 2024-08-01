@@ -10,7 +10,7 @@ public class Draggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     private bool m_Grabbed;
 
     [Header("Drop Shadow")]
-    [SerializeField] private Graphic m_Paper;
+    [SerializeField] private CanvasGroup m_ItemBody;
     [SerializeField] private Graphic m_Shadow;
     [SerializeField] private float m_ShadowScaleFactor;
     [SerializeField] private float m_ShadowOffset;
@@ -37,7 +37,7 @@ public class Draggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             GameMgr.Events.Dispatch(GameEvents.DocumentDropped);
         }
         if (dragging) {
-            m_Paper.raycastTarget = !grabbed;
+            m_ItemBody.blocksRaycasts = !grabbed;
         }
 
         
