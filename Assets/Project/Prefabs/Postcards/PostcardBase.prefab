@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3994788775863373326}
   - component: {fileID: 3994788775863373324}
-  - component: {fileID: 2472377501898089928}
+  - component: {fileID: 1379478973388522621}
   m_Layer: 5
   m_Name: PostcardBase
   m_TagString: Untagged
@@ -129,7 +129,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3994788775863373327}
   m_CullTransparentMesh: 1
---- !u!114 &2472377501898089928
+--- !u!114 &1379478973388522621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,11 +138,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3994788775863373327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8ecb4d66b2c614280bf73f4083a25a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8245002313a65fe4ebd483dd6a4b03ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScaleFactor: 1.2
-  m_ItemBody: {fileID: 2525525844485587102}
+  DraggableType: 1
+  BodyGroup: {fileID: 2525525844485587102}
+  GrabScaleFactor: 1.2
   m_Shadow: {fileID: 6571084648968094461}
   m_ShadowScaleFactor: 1.1
   m_ShadowOffset: 40

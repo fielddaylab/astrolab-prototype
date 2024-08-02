@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3286716230372228973}
-  - component: {fileID: 1482696644500088998}
+  - component: {fileID: 5332743440811953376}
   m_Layer: 5
   m_Name: DataSlot
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1482696644500088998
+--- !u!114 &5332743440811953376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6417213862601547117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5643921ffed060f418124b385f198b66, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 0

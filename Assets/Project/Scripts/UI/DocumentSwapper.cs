@@ -17,35 +17,41 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
     [SerializeField] private SendTo SendTo;
 
     public void Start() {
-        GameMgr.Events.Register(GameEvents.DocumentGrabbed, OnDocumentGrabbed);
-        GameMgr.Events.Register(GameEvents.DocumentDropped, OnDocumentDropped);
+        GameMgr.Events.Register<DraggableType>(GameEvents.DraggableGrabbed, OnDraggableGrabbed);
+        GameMgr.Events.Register<DraggableType>(GameEvents.DraggableDropped, OnDraggableDropped);
         gameObject.SetActive(false);
     }
 
     public void OnDrop(PointerEventData eventData) {
         // send event to push a postcard to the main screen zone 
-        if (eventData.pointerDrag.TryGetComponent<Draggable>(out Draggable postcard)) {
+        if (eventData.pointerDrag.TryGetComponent<Postcard>(out Postcard postcard)) {
             Log.Msg("Dropped postcard {0}", postcard.transform.name);
+            postcard.gameObject.SetActive(false);
             if (SendTo == SendTo.MainScreen) {
-                postcard.transform.SetParent(MainScreen.transform, false);
+                postcard.transform.SetParent(MainScreen.transform, true);
                 DocModule.Close();
                 postcard.transform.localPosition = Vector3.zero;
                 postcard.transform.localScale = new Vector3(DocModule.MainScreenScale, DocModule.MainScreenScale);
             } else if (SendTo == SendTo.Module) {
                 DocModule.Open();
-                postcard.transform.SetParent(DocModule.transform, false);
+                postcard.transform.SetParent(DocModule.transform, true);
                 postcard.transform.localPosition = Vector3.zero;
                 postcard.transform.localScale = new Vector3(DocModule.ModuleScale, DocModule.ModuleScale);
             }
+            postcard.gameObject.SetActive(true);
 
         }
     }
 
-    public void OnDocumentGrabbed() {
-        gameObject.SetActive(true);
+    public void OnDraggableGrabbed(DraggableType type) {
+        if (type == DraggableType.Postcard) {
+            gameObject.SetActive(true);
+        }
     }
 
-    public void OnDocumentDropped() {
-        gameObject.SetActive(false);
+    public void OnDraggableDropped(DraggableType type) {
+        if (type == DraggableType.Postcard) {
+            gameObject.SetActive(false);
+        }
     }
 }

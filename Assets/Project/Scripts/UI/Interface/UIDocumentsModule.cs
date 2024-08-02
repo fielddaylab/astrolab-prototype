@@ -9,7 +9,7 @@ namespace AstroLab
     public class UIDocumentsModule : UIInterfaceModule
     {
 
-        public HashSet<Draggable> Postcards;
+        public HashSet<Postcard> Postcards;
 
         public float ModuleScale;
         public float MainScreenScale;

@@ -9,8 +9,8 @@ public class UIDocumentContainer : MonoBehaviour {
     [SerializeField] private Graphic Background;
 
     public void Start() {
-        GameMgr.Events.Register(GameEvents.DocumentGrabbed, OnDocumentGrabbed);
-        GameMgr.Events.Register(GameEvents.DocumentDropped, OnDocumentDropped);
+        GameMgr.Events.Register(GameEvents.DraggableGrabbed, OnDocumentGrabbed);
+        GameMgr.Events.Register(GameEvents.DraggableDropped, OnDocumentDropped);
         Background.raycastTarget = false;
     }
 

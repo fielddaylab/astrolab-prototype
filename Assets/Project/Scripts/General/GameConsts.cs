@@ -22,7 +22,7 @@ namespace AstroLab
         static public readonly StringHash32 NotebookTabClicked = "world:notebook-tab-clicked"; // NotebookFlags
         static public readonly StringHash32 CelestialObjIdentified = "world:celestial-obj-identified";
 
-        static public readonly StringHash32 DocumentGrabbed = "world:document-grabbed";
-        static public readonly StringHash32 DocumentDropped = "world:document-dropped";
+        static public readonly StringHash32 DraggableGrabbed = "world:draggable-grabbed";
+        static public readonly StringHash32 DraggableDropped = "world:draggable-dropped";
     }
 }
