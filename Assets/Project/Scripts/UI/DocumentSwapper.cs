@@ -17,8 +17,8 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
     [SerializeField] private SendTo SendTo;
 
     public void Start() {
-        GameMgr.Events.Register<DraggableType>(GameEvents.DraggableGrabbed, OnDraggableGrabbed);
-        GameMgr.Events.Register<DraggableType>(GameEvents.DraggableDropped, OnDraggableDropped);
+        GameMgr.Events.Register<DraggableFlags>(GameEvents.DraggableGrabbed, OnDraggableGrabbed);
+        GameMgr.Events.Register<DraggableFlags>(GameEvents.DraggableDropped, OnDraggableDropped);
         gameObject.SetActive(false);
     }
 
@@ -31,7 +31,7 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
                 postcard.transform.SetParent(MainScreen.transform, true);
                 DocModule.Close();
                 postcard.transform.localPosition = Vector3.zero;
-                postcard.transform.localScale = new Vector3(DocModule.MainScreenScale, DocModule.MainScreenScale);
+                postcard.transform.localScale = new Vector3(DocModule.MainScreenScale, DocModule.MainScreenScale, 1);
             } else if (SendTo == SendTo.Module) {
                 DocModule.Open();
                 postcard.transform.SetParent(DocModule.transform, true);
@@ -43,14 +43,14 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
         }
     }
 
-    public void OnDraggableGrabbed(DraggableType type) {
-        if (type == DraggableType.Postcard) {
+    public void OnDraggableGrabbed(DraggableFlags flags) {
+        if (flags.HasFlag(DraggableFlags.Postcard)) {
             gameObject.SetActive(true);
         }
     }
 
-    public void OnDraggableDropped(DraggableType type) {
-        if (type == DraggableType.Postcard) {
+    public void OnDraggableDropped(DraggableFlags flags) {
+        if (flags.HasFlag(DraggableFlags.Postcard)) {
             gameObject.SetActive(false);
         }
     }

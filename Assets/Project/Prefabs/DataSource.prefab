@@ -66,9 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dummy Data
-
-'
+  m_text: Data
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -210,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7164471, g: 0.83316386, b: 0.9433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -285,9 +283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dummy Data
-
-'
+  m_text: Data
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -365,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4453299814589614548}
-  - component: {fileID: 2172220254805038862}
+  - component: {fileID: 8000323841256699407}
   m_Layer: 5
   m_Name: DataSource
   m_TagString: Untagged
@@ -395,7 +391,7 @@ RectTransform:
   m_AnchoredPosition: {x: -171.2, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2172220254805038862
+--- !u!114 &8000323841256699407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,14 +400,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5468125603024037538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362a50082529aa9458f237dc39d545f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 94fdc3560a2f90b4188e6a686cf54a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggableType: 2
+  DraggableFlags: 0
   BodyGroup: {fileID: 1863096637501127895}
   GrabScaleFactor: 1
-  DataType: 2
-  DraggingVisual: {fileID: 8792652281076072946}
+  Payload:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Magnitude: 0
+    Spectrum: 0
+  DragVisual: {fileID: 6100781855441175936}
 --- !u!1 &7103183417935050742
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +427,7 @@ GameObject:
   - component: {fileID: 8792652281076072946}
   - component: {fileID: 6593807901069606734}
   - component: {fileID: 5344724520452736557}
+  - component: {fileID: 6100781855441175936}
   m_Layer: 5
   m_Name: DraggingVisual
   m_TagString: Untagged
@@ -485,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7164471, g: 0.83316386, b: 0.9433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -494,3 +498,17 @@ MonoBehaviour:
       m_Calls: []
   m_Outline: 0
   m_Thickness: 1
+--- !u!114 &6100781855441175936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103183417935050742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a8be6626d47e547bd44b61e352d3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 8000323841256699407}
+  CanvasGroup: {fileID: 8792652281076072946}

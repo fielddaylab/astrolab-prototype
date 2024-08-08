@@ -1,19 +1,24 @@
 
 using AstroLab;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum DraggableType {
-    None,
-    Postcard,
-    Data
+[Flags]
+public enum DraggableFlags {
+    Postcard = 0x1,
+    Name = 0x2,
+    Coords = 0x4,
+    Color = 0x8,
+    Magnitude = 0x10,
+    Spectrum = 0x20,
 }
 
 public abstract class AbstractDraggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler {
 
-    [SerializeField] protected DraggableType DraggableType;
+    [SerializeField] public DraggableFlags DraggableFlags;
     [SerializeField] protected CanvasGroup BodyGroup;
-    [SerializeField] protected float GrabScaleFactor;
+    [SerializeField] protected float GrabScaleFactor = 1f;
 
     protected bool m_Grabbed = false;
 
@@ -27,9 +32,9 @@ public abstract class AbstractDraggable : MonoBehaviour, IDragHandler, IBeginDra
 
         if (grabbed) {
             transform.SetAsLastSibling();
-            GameMgr.Events.Dispatch(GameEvents.DraggableGrabbed, this.DraggableType);
+            GameMgr.Events.Dispatch(GameEvents.DraggableGrabbed, DraggableFlags);
         } else {
-            GameMgr.Events.Dispatch(GameEvents.DraggableDropped, this.DraggableType);
+            GameMgr.Events.Dispatch(GameEvents.DraggableDropped, DraggableFlags);
         }
 
         BodyGroup.blocksRaycasts = dragging && !grabbed;

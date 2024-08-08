@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8245002313a65fe4ebd483dd6a4b03ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggableType: 1
+  DraggableFlags: 1
   BodyGroup: {fileID: 2525525844485587102}
   GrabScaleFactor: 1.2
   m_Shadow: {fileID: 6571084648968094461}

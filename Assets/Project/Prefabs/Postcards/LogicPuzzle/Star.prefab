@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1561387845528630999}
-  - component: {fileID: 8374747798744571547}
+  - component: {fileID: 5261568158884432082}
   m_Layer: 5
   m_Name: CoordinateSlot
   m_TagString: Untagged
@@ -244,7 +244,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8374747798744571547
+--- !u!114 &5261568158884432082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,10 +253,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173688153765588578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotType: 1
+  SlotType: 4
+  SlotFilled: 0
   DropHighlight: {fileID: 7614519615123204913}
   Graphic: {fileID: 0}
   Text: {fileID: 2809692321356194502}
@@ -411,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3906642332197159754}
-  - component: {fileID: 2709895055231278127}
+  - component: {fileID: 7118137282215195517}
   m_Layer: 5
   m_Name: SpectrumSlot
   m_TagString: Untagged
@@ -441,7 +442,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2709895055231278127
+--- !u!114 &7118137282215195517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,10 +451,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2479108380839733732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotType: 4
+  SlotType: 32
+  SlotFilled: 0
   DropHighlight: {fileID: 1831559759864978963}
   Graphic: {fileID: 5482958806821981018}
   Text: {fileID: 0}
@@ -609,11 +611,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slots:
-  - {fileID: 7718235387116456420}
-  - {fileID: 2836528157168738852}
-  - {fileID: 8374747798744571547}
-  - {fileID: 8440778214693430318}
-  - {fileID: 2709895055231278127}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &3746536995493256130
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3786661831188286857}
-  - component: {fileID: 2836528157168738852}
+  - component: {fileID: 8037234085541556882}
   m_Layer: 5
   m_Name: NameSlot
   m_TagString: Untagged
@@ -723,7 +725,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2836528157168738852
+--- !u!114 &8037234085541556882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,10 +734,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3824889955656872146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotType: 0
+  SlotType: 2
+  SlotFilled: 0
   DropHighlight: {fileID: 9216606591480081244}
   Graphic: {fileID: 0}
   Text: {fileID: 825470135214015358}
@@ -883,7 +886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5183444447916187885}
-  - component: {fileID: 8440778214693430318}
+  - component: {fileID: 6674052721809846561}
   m_Layer: 5
   m_Name: LuminositySlot
   m_TagString: Untagged
@@ -913,7 +916,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8440778214693430318
+--- !u!114 &6674052721809846561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -922,12 +925,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5859548369117511581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotType: 3
-  DropHighlight: {fileID: 0}
-  Graphic: {fileID: 8319809809947182600}
+  SlotType: 16
+  SlotFilled: 0
+  DropHighlight: {fileID: 8319809809947182600}
+  Graphic: {fileID: 0}
   Text: {fileID: 436183754968739071}
 --- !u!1 &6988351392396549905
 GameObject:
@@ -938,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7396971703991452731}
-  - component: {fileID: 7718235387116456420}
+  - component: {fileID: 2765744837332302233}
   m_Layer: 5
   m_Name: GraphicSlot
   m_TagString: Untagged
@@ -968,7 +972,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7718235387116456420
+--- !u!114 &2765744837332302233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -977,10 +981,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6988351392396549905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotType: 2
+  SlotType: 8
+  SlotFilled: 0
   DropHighlight: {fileID: 2144114930697470353}
   Graphic: {fileID: 1719701361689555589}
   Text: {fileID: 0}
