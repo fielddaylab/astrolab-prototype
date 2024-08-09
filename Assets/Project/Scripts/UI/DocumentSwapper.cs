@@ -36,7 +36,7 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
                 DocModule.Open();
                 postcard.transform.SetParent(DocModule.transform, true);
                 postcard.transform.localPosition = Vector3.zero;
-                postcard.transform.localScale = new Vector3(DocModule.ModuleScale, DocModule.ModuleScale);
+                postcard.transform.localScale = new Vector3(DocModule.ModuleScale, DocModule.ModuleScale, 1);
             }
             postcard.gameObject.SetActive(true);
 

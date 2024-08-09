@@ -100,8 +100,7 @@ namespace AstroLab
             return degrees;
         }
 
-        public static Vector3 DegreesToRA(double degrees)
-        {
+        public static Vector3 DegreesToRA(double degrees) {
             int hrs, minutes = 0;
             double seconds = 0;
 
@@ -113,6 +112,12 @@ namespace AstroLab
             seconds = degrees * 3600;
 
             return new Vector3(hrs, minutes, (float)seconds);
+        }
+
+        public static EqCoordinates RadiansToCoordinates(float raRad, float dRad) {
+            var raDegrees = RadianToDegree(raRad);
+            var declDegrees = RadianToDegree(dRad);
+            return new EqCoordinates(DegreesToRA(raDegrees), DecimalDegreesToDegrees(declDegrees));
         }
 
 

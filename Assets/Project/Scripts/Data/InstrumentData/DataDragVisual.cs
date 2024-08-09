@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class DataDragVisual : MonoBehaviour {
-    public DataSource Source;
-    public CanvasGroup CanvasGroup;
+namespace AstroLab {
+    public class DataDragVisual : MonoBehaviour {
+        public DataSource Source;
+        public CanvasGroup CanvasGroup;
+    }
 }

@@ -184,6 +184,7 @@ namespace AstroLab
         {
             var currData = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data;
 
+            EqCoordinates finalCoords;
             Vector3 finalRA;
             Vector3 finalDecl;
             if (currData.UseRadianRADecl)
@@ -192,11 +193,13 @@ namespace AstroLab
                 finalRA = CoordinateUtility.DegreesToRA(raDegrees);
                 var declDegrees = CoordinateUtility.RadianToDegree(currData.DeclRad);
                 finalDecl = CoordinateUtility.DecimalDegreesToDegrees(declDegrees);
+                finalCoords = CoordinateUtility.RadiansToCoordinates(currData.RARad, currData.DeclRad);
             }
             else
             {
                 finalRA = currData.RA;
                 finalDecl = currData.Decl;
+                finalCoords = new EqCoordinates(currData.RA, currData.Decl);
             }
 
             m_coordRAReadoutText.SetText(

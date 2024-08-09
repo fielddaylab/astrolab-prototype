@@ -257,6 +257,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 4
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
   SlotFilled: 0
   DropHighlight: {fileID: 7614519615123204913}
   Graphic: {fileID: 0}
@@ -440,7 +448,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 100}
+  m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7118137282215195517
 MonoBehaviour:
@@ -455,6 +463,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 32
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
   SlotFilled: 0
   DropHighlight: {fileID: 1831559759864978963}
   Graphic: {fileID: 5482958806821981018}
@@ -611,11 +627,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2765744837332302233}
+  - {fileID: 8037234085541556882}
+  - {fileID: 5261568158884432082}
+  - {fileID: 6674052721809846561}
+  - {fileID: 7118137282215195517}
+  Solution:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
 --- !u!1 &3746536995493256130
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +762,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 2
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
   SlotFilled: 0
   DropHighlight: {fileID: 9216606591480081244}
   Graphic: {fileID: 0}
@@ -929,6 +961,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 16
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
   SlotFilled: 0
   DropHighlight: {fileID: 8319809809947182600}
   Graphic: {fileID: 0}
@@ -985,6 +1025,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 8
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
   SlotFilled: 0
   DropHighlight: {fileID: 2144114930697470353}
   Graphic: {fileID: 1719701361689555589}
