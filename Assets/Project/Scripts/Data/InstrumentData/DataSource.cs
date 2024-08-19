@@ -1,14 +1,11 @@
-
-
 using AstroLab;
 using BeauPools;
-using BeauRoutine;
 using BeauUtil;
-using BeauUtil.Variants;
 using System;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace AstroLab {
     [Serializable]
@@ -18,6 +15,20 @@ namespace AstroLab {
         public Color Color;
         public float Magnitude;
         public float Spectrum;
+        public DataPayload (string name) {
+            Name = name;
+            Coordinates = default;
+            Color = default;
+            Magnitude = default;
+            Spectrum = default;
+        }
+        public DataPayload (EqCoordinates coords) {
+            Name = default;
+            Coordinates = coords; 
+            Color = default;
+            Magnitude = default;
+            Spectrum = default;
+        }
     }
 
     [Serializable]
@@ -55,6 +66,8 @@ namespace AstroLab {
 
         [SerializeField] private DataPayload Payload;
         [SerializeField] private DataDragVisual DragVisual;
+        [SerializeField] private Graphic DataGraphic;
+        [SerializeField] private TMP_Text DataText;
 
         private void Start() {
             InstantiateDraggingVisual();
@@ -62,6 +75,11 @@ namespace AstroLab {
 
         public DataPayload GetPayload() {
             return Payload;
+        }
+
+        public void SetPayload(DataPayload payload) {
+            // TODO: set, check type (?) and update text
+
         }
 
         private void InstantiateDraggingVisual() {

@@ -11,7 +11,12 @@ namespace AstroLab {
         // NOTE FOR FINAL VERSION: if we can be sure that each slot will be different, it may make more sense to use a single "DataPayload"-like object for each star, rather than each slot having a whole DataPayload
         public DataSlot[] Slots;
 
+        [SerializeField] public DataPayload StartingValues;
         [SerializeField] private DataPayload Solution;
+
+        public void PopulateSlots() {
+
+        }
 
         public bool EvaluateSolved() {
             // iterate through slots: if any don't match the solution, return false

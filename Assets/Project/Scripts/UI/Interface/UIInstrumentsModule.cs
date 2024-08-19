@@ -30,10 +30,12 @@ namespace AstroLab
         [SerializeField] private GameObject m_coordinatesGroup;
         [SerializeField] private TMP_Text m_coordRAReadoutText;
         [SerializeField] private TMP_Text m_coordDeclReadoutText;
+        [SerializeField] private DataSource m_fullCoords;
         [SerializeField] private TMP_Text m_coordConstellationReadoutText;
 
         [Header("Photometer Group")]
         [SerializeField] private GameObject m_photometerGroup;
+        [SerializeField] private DataSource m_photometerData;
 
         [Header("Spectrometer Group")]
         [SerializeField] private GameObject m_spectrometerGroup;
@@ -213,6 +215,7 @@ namespace AstroLab
                 + finalDecl.z.ToString("F1") + "''");
 
             m_coordConstellationReadoutText.SetText(currData.Constellation);
+            m_fullCoords.SetPayload(new DataPayload(finalCoords));
 
             m_coordinatesGroup.SetActive(true);
         }

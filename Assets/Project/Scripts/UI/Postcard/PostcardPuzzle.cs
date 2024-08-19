@@ -14,6 +14,7 @@ namespace AstroLab {
 
         private void Start() {
             m_FinishButton.onClick.AddListener(OnFinishClicked);
+            m_FinishButton.interactable = false;
         }
 
         public bool EvaluateSolved() {
@@ -22,6 +23,7 @@ namespace AstroLab {
                     return false;
                 }
             }
+            m_FinishButton.interactable = true;
             return true;
         }
 
