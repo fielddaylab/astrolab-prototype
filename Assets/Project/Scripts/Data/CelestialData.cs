@@ -14,6 +14,9 @@ namespace AstroLab
         [SerializeField] private float m_declinationRadian;
         [SerializeField] private string m_identifyEntryID;
 
+        [Header("Magnitude")]
+        [SerializeField] private float m_magnitude;
+
         [Header("Color")]
         [SerializeField] private string m_color;
 
@@ -42,6 +45,7 @@ namespace AstroLab
         public bool UseOverrideFocusVisual { get { return m_useOverrideFocusVisual; } }
         public GameObject OverrideFocusVisual { get { return m_overrideFocusVisual; } }
         public string IdentifyEntryID { get { return m_identifyEntryID; } }
+        public float Magnitude { get { return m_magnitude; } }
         public string Color { get { return m_color; } }
     }
 }

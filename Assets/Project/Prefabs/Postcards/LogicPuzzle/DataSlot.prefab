@@ -47,11 +47,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6417213862601547117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66ea02b2b99244e8282d8748134c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5a6bbfcc6b66843a92c34cd0285e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SlotType: 0
-  DropHighlight: {fileID: 4791247404680529923}
+  FilledData:
+    Name: 
+    Coordinates:
+      RightAscension: {x: 0, y: 0, z: 0}
+      Declination: {x: 0, y: 0, z: 0}
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Magnitude: 0
+    Spectrum: 0
+  SlotFilled: 0
+  DropHighlight: {fileID: 0}
   Graphic: {fileID: 0}
   Text: {fileID: 0}
 --- !u!1 &8505954595125219171

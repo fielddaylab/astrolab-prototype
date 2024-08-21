@@ -1,6 +1,7 @@
 using AstroLab;
 using BeauPools;
 using BeauUtil;
+using BeauUtil.Debugger;
 using System;
 using TMPro;
 using UnityEngine;
@@ -29,6 +30,20 @@ namespace AstroLab {
             Magnitude = default;
             Spectrum = default;
         }
+        public DataPayload (Color color) {
+            Name = default;
+            Coordinates = default;
+            Color = color;
+            Magnitude = default;
+            Spectrum = default;
+        }
+        public DataPayload(float mag) {
+            Name = default;
+            Coordinates = default;
+            Color = default;
+            Magnitude = mag;
+            Spectrum = default;
+        }
     }
 
     [Serializable]
@@ -46,19 +61,23 @@ namespace AstroLab {
         }
         public override string ToString() {
             using PooledStringBuilder psb = PooledStringBuilder.Create();
-            psb.Builder.Append(RightAscension.x).Append("h\t");
-            psb.Builder.Append(RightAscension.y).Append("m\t");
+            psb.Builder.Append(RightAscension.x).Append("h ");
+            psb.Builder.Append(RightAscension.y).Append("m ");
             psb.Builder.Append(RightAscension.z.ToString("F1")).Append("s\n");
 
-            psb.Builder.Append(RightAscension.x).Append("\u00B0\t");
-            psb.Builder.Append(RightAscension.y).Append("'\t");
-            psb.Builder.Append(RightAscension.z.ToString("F1")).Append("\"");
+            psb.Builder.Append(Declination.x).Append("\u00B0 ");
+            psb.Builder.Append(Declination.y).Append("' ");
+            psb.Builder.Append(Declination.z.ToString("F1")).Append("\"");
             return psb.Builder.Flush();
         }
         public override bool Equals(object obj) {
             if (obj is not EqCoordinates) return false;
             return RightAscension.Equals(((EqCoordinates)obj).RightAscension)
                 && Declination.Equals(((EqCoordinates)obj).Declination);
+        }
+        public bool Zero() {
+            return RightAscension.Equals(Vector3.zero)
+                && Declination.Equals(Vector3.zero);
         }
     }
 
@@ -78,8 +97,25 @@ namespace AstroLab {
         }
 
         public void SetPayload(DataPayload payload) {
-            // TODO: set, check type (?) and update text
+            Payload = payload;
+            DisplayPayload();
+        }
 
+        private void DisplayPayload() {
+            if (Payload.Name != null) {
+                DataText.SetText(Payload.Name);
+            } else if (!Payload.Magnitude.Equals(default)) {
+                DataText.SetText(Payload.Magnitude.ToString());
+            } else if (!Payload.Color.Equals(default)) {
+                DataGraphic.color = Payload.Color;
+            } else if (!Payload.Coordinates.Zero()) {
+                DataText.SetText(Payload.Coordinates.ToString());
+            } else if (!Payload.Spectrum.Equals(default)) {
+                Log.Warn("[DataSource] Spectrum graphics unimplemented!");
+            } else {
+                Log.Warn("[DataSource] All default payload! Unimplemented?");
+                return;
+            }
         }
 
         private void InstantiateDraggingVisual() {

@@ -13,6 +13,7 @@ namespace AstroLab
         [SerializeField] private Button m_closeButton;
 
         [SerializeField] private TMP_Text m_objName;
+        [SerializeField] private DataSource m_nameData;
 
         [SerializeField] private CameraController m_camController;
 
@@ -39,10 +40,12 @@ namespace AstroLab
 
         [Header("Spectrometer Group")]
         [SerializeField] private GameObject m_spectrometerGroup;
+        [SerializeField] private DataSource m_spectrumData;
 
         [Header("Color Group")]
         [SerializeField] private GameObject m_colorGroup;
         [SerializeField] private TMP_Text m_colorText;
+        [SerializeField] private DataSource m_colorData;
 
         private static string UNKNOWN_OBJ_TEXT = "Unknown Object";
 
@@ -164,16 +167,21 @@ namespace AstroLab
             {
                 if (FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified)
                 {
-                    m_objName.SetText(FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.Name);
-                }
-                else
+                    string name = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.Name;
+                    m_objName.SetText(name);
+                    m_nameData.SetPayload(new DataPayload(name));
+                    m_nameData.gameObject.SetActive(true);
+                } else
                 {
                     m_objName.SetText(UNKNOWN_OBJ_TEXT);
+                    m_nameData.SetPayload(new DataPayload(UNKNOWN_OBJ_TEXT));
+                    m_nameData.gameObject.SetActive(true);
                 }
             }
             else
             {
                 m_objName.text = string.Empty;
+                m_nameData.gameObject.SetActive(false);
             }
         }
 
@@ -222,6 +230,9 @@ namespace AstroLab
 
         private void DisplayPhotometer()
         {
+            var currData = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data;
+
+            m_photometerData.SetPayload(new DataPayload(currData.Magnitude));
             m_photometerGroup.SetActive(true);
         }
 
@@ -237,6 +248,7 @@ namespace AstroLab
             m_colorGroup.SetActive(true);
 
             m_colorText.SetText(currData.Color);
+            m_colorData.SetPayload(new DataPayload(currData.OverrideMat.color));
         }
 
         private void HandleInstrumentUnlocksChanged()

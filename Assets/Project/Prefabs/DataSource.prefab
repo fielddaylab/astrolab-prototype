@@ -415,6 +415,8 @@ MonoBehaviour:
     Magnitude: 0
     Spectrum: 0
   DragVisual: {fileID: 6100781855441175936}
+  DataGraphic: {fileID: 1403619189953074821}
+  DataText: {fileID: 3303858228698800917}
 --- !u!1 &7103183417935050742
 GameObject:
   m_ObjectHideFlags: 0
