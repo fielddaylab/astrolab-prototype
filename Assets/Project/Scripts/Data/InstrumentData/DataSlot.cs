@@ -15,6 +15,7 @@ namespace AstroLab {
         public DraggableFlags SlotType;
         public DataPayload FilledData;
         public bool SlotFilled = false;
+        public bool SlotLocked = false;
 
 
         [SerializeField] private Graphic DropHighlight;
@@ -28,11 +29,11 @@ namespace AstroLab {
             if (DropHighlight != null) {
                 DropHighlight.raycastTarget = false;
             }
-            DisplayFilledData();
         }
 
         public void OnDrop(PointerEventData eventData) {
             Log.Msg("Dropped item! {0}", eventData.pointerDrag.name);
+            if (SlotLocked) return;
             if (eventData.pointerDrag.TryGetComponent<DataSource>(out DataSource dragged)) {
                 if ((SlotType & dragged.DraggableFlags) != 0) {
                     FilledData = dragged.GetPayload();
@@ -43,10 +44,17 @@ namespace AstroLab {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            if (!SlotFilled) return;
+            if (!SlotFilled || SlotLocked) return;
             FilledData = NullData;
             DisplayFilledData();
             SlotFilled = false;
+        }
+
+        public void SetData(DataPayload payload, bool lockData = false) {
+            FilledData = payload;
+            SlotFilled = true;
+            SlotLocked = lockData;
+            DisplayFilledData();
         }
 
         public void DisplayFilledData() {
@@ -54,18 +62,22 @@ namespace AstroLab {
             switch (SlotType) {
                 case DraggableFlags.Name:
                     Text.SetText(FilledData.Name);
+                    Log.Msg("Name of star set to {0}", FilledData.Name);
                     break;
                 case DraggableFlags.Coords:
                     Text.SetText(FilledData.Coordinates.ToString());
+                    Log.Msg("Coords set to {0}", FilledData.Coordinates.ToString());
                     break;
                 case DraggableFlags.Color:
                     Graphic.color = FilledData.Color;
+                    Log.Msg("Color set to {0}", FilledData.Color.ToString());
                     break;
                 case DraggableFlags.Magnitude:
                     Text.SetText(FilledData.Magnitude.ToString());
+                    Log.Msg("Mag set to {0}", FilledData.Magnitude.ToString());
                     break;
                 case DraggableFlags.Spectrum:
-                    Text.SetText(FilledData.Spectrum.ToString());
+                    //Text.SetText(FilledData.Spectrum.ToString());
                     break;
             }
         }

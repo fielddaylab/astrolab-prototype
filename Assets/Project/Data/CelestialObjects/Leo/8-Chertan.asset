@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e28aad553079cca40a120edae46a8cfe, type: 3}
-  m_Name: BeetlegeuseData
+  m_Name: 8-Chertan
   m_EditorClassIdentifier: 
-  m_name: Betelgeuse
-  m_rightAscension: {x: 5, y: 55, z: 15}
-  m_declination: {x: 7, y: 24, z: 24}
-  m_constellation: Orion
+  m_name: Chertan
+  m_rightAscension: {x: 11, y: 14, z: 14.4}
+  m_declination: {x: 15, y: 25, z: 46.5}
+  m_constellation: Leo
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
   m_identifyEntryID: Main Sequence Star 1
-  m_magnitude: 0.5
-  m_color: blue-ish
+  m_magnitude: 3.32
+  m_color: bluish white
   m_represent2D: {fileID: 21300000, guid: d255e7dd7dabbe949b7e56c2f3e558f4, type: 3}
   m_useOverrideMat: 0
-  m_overrideMat: {fileID: 2100000, guid: c9faa039d9b123a48905f10f62ddd1da, type: 2}
+  m_overrideMat: {fileID: 2100000, guid: 8df1a1c9acacd4f4ea08e19cd134dd98, type: 2}
   m_useOverrideCOPrefab: 0
   m_overrideCOPrefab: {fileID: 0}
   m_useOverrideFocusVisual: 0

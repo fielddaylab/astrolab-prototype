@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AstroLab {
 
@@ -14,8 +10,56 @@ namespace AstroLab {
         [SerializeField] public DataPayload StartingValues;
         [SerializeField] private DataPayload Solution;
 
-        public void PopulateSlots() {
+        [SerializeField] private CelestialData RefObject;
 
+        [ContextMenu("Populate Starting Values")]
+        public void PopulateStartingValues() {
+            for (int i = 0; i < Slots.Length; i++) {
+                switch (Slots[i].SlotType) {
+                    case DraggableFlags.Name:
+                        Slots[i].SetData(new DataPayload(StartingValues.Name), true);
+                        break;
+                    case DraggableFlags.Coords:
+                        Slots[i].SetData(new DataPayload(StartingValues.Coordinates), true);
+                        break;
+                    case DraggableFlags.Color:
+                        Slots[i].SetData(new DataPayload(StartingValues.Color), true);
+                        break;
+                    case DraggableFlags.Magnitude:
+                        Slots[i].SetData(new DataPayload(StartingValues.Magnitude), true);
+                        break;
+                    case DraggableFlags.Spectrum:
+                        Slots[i].SetData(new DataPayload(StartingValues.Spectrum), true);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        [ContextMenu("Populate Starting Values From Ref")]
+        private void RefToStartingVals() {
+            if (RefObject == null) return;
+            DataPayload refVals = new DataPayload() { };
+            refVals.Name = RefObject.Name;
+            refVals.Coordinates = new EqCoordinates(RefObject.RA, RefObject.Decl);
+            refVals.Color = RefObject.OverrideMat.color;
+            refVals.Magnitude = RefObject.Magnitude;
+            //newVals.Spectrum = RefObject.Spectrum;
+            StartingValues = refVals;
+            PopulateStartingValues();
+        }
+
+        [ContextMenu("Populate Solution Values From Ref")]
+        public void RefToSolutionVals() {
+            if (RefObject == null) return;
+            DataPayload refVals = new DataPayload() { };
+            refVals.Name = RefObject.Name;
+            refVals.Coordinates = new EqCoordinates(RefObject.RA, RefObject.Decl);
+            refVals.Color = RefObject.OverrideMat.color;
+            refVals.Magnitude = RefObject.Magnitude;
+            //newVals.Spectrum = RefObject.Spectrum;
+            Solution = refVals;
         }
 
         public bool EvaluateSolved() {
