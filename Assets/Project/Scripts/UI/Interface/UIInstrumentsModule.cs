@@ -238,7 +238,10 @@ namespace AstroLab
 
         private void DisplaySpectrometer()
         {
+            var currData = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data;
+
             m_spectrometerGroup.SetActive(true);
+            m_spectrumData.SetPayload(new DataPayload(currData.Spectrum));
         }
 
         private void DisplayColor()

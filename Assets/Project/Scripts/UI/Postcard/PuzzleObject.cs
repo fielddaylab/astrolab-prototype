@@ -45,7 +45,7 @@ namespace AstroLab {
             refVals.Coordinates = new EqCoordinates(RefObject.RA, RefObject.Decl);
             refVals.Color = RefObject.OverrideMat.color;
             refVals.Magnitude = RefObject.Magnitude;
-            //newVals.Spectrum = RefObject.Spectrum;
+            refVals.Spectrum = RefObject.Spectrum;
             StartingValues = refVals;
             PopulateStartingValues();
         }
@@ -58,7 +58,7 @@ namespace AstroLab {
             refVals.Coordinates = new EqCoordinates(RefObject.RA, RefObject.Decl);
             refVals.Color = RefObject.OverrideMat.color;
             refVals.Magnitude = RefObject.Magnitude;
-            //newVals.Spectrum = RefObject.Spectrum;
+            refVals.Spectrum = RefObject.Spectrum;
             Solution = refVals;
         }
 

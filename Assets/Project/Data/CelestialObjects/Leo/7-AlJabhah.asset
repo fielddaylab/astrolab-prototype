@@ -22,6 +22,7 @@ MonoBehaviour:
   m_identifyEntryID: Blue Supergiant
   m_magnitude: 3.49
   m_color: bluish white
+  m_spectrum: 31
   m_represent2D: {fileID: 21300000, guid: d255e7dd7dabbe949b7e56c2f3e558f4, type: 3}
   m_useOverrideMat: 0
   m_overrideMat: {fileID: 2100000, guid: 8df1a1c9acacd4f4ea08e19cd134dd98, type: 2}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58baf77432a10244acefb3ca320caa1, type: 3}
+  m_Name: Leo
+  m_EditorClassIdentifier: 
+  m_PuzzleObjects:
+  - RefObject: {fileID: 11400000, guid: eafaa97d14e43aa4ab8aa2c9732d0693, type: 2}
+    ShowProperties: 34
+  - RefObject: {fileID: 11400000, guid: fdd8d7541758faa448f475232b13d819, type: 2}
+    ShowProperties: 34
+  - RefObject: {fileID: 11400000, guid: ad82f7c67c40e7b478d7e73eabac0c05, type: 2}
+    ShowProperties: 42
+  - RefObject: {fileID: 11400000, guid: 10d9d00870e69dc49a7bc5b90497791f, type: 2}
+    ShowProperties: 6
+  m_Clues:
+  - Denebola is a different color than Algieba
+  - Algieba is brighter than Zosma
+  - The brightest star contains no Iron

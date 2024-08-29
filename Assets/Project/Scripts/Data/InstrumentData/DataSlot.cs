@@ -52,9 +52,30 @@ namespace AstroLab {
 
         public void SetData(DataPayload payload, bool lockData = false) {
             FilledData = payload;
-            SlotFilled = true;
-            SlotLocked = lockData;
+            if (TypePopulated()) {
+                SlotFilled = true;
+                SlotLocked = lockData;
+            } else {
+                SlotFilled = false;
+                SlotLocked = false;
+            }
             DisplayFilledData();
+        }
+
+        private bool TypePopulated() {
+            switch (SlotType) {
+                case DraggableFlags.Name:
+                    return !FilledData.Name.Equals(default);
+                case DraggableFlags.Coords:
+                    return !FilledData.Coordinates.IsZero();
+                case DraggableFlags.Color:
+                    return !FilledData.Color.Equals(Color.white);
+                case DraggableFlags.Magnitude:
+                    return !FilledData.Magnitude.Equals(default);
+                case DraggableFlags.Spectrum:
+                    return !FilledData.Spectrum.Equals((StarElements)0);
+            }
+            return false;
         }
 
         public void DisplayFilledData() {
@@ -77,7 +98,10 @@ namespace AstroLab {
                     Log.Msg("Mag set to {0}", FilledData.Magnitude.ToString());
                     break;
                 case DraggableFlags.Spectrum:
-                    //Text.SetText(FilledData.Spectrum.ToString());
+                    if (Graphic is Spectrograph) {
+                        Spectrograph spec = (Spectrograph)Graphic;
+                        spec.DisplaySpectrum(FilledData.Spectrum);
+                    }
                     break;
             }
         }

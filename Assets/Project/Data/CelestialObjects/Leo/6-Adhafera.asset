@@ -22,6 +22,7 @@ MonoBehaviour:
   m_identifyEntryID: Giant F
   m_magnitude: 3.33
   m_color: yellowish white
+  m_spectrum: -1
   m_represent2D: {fileID: 21300000, guid: d255e7dd7dabbe949b7e56c2f3e558f4, type: 3}
   m_useOverrideMat: 0
   m_overrideMat: {fileID: 2100000, guid: 8aeda30d10386f84c818c343c31b7089, type: 2}

@@ -15,7 +15,7 @@ namespace AstroLab {
         public EqCoordinates Coordinates;
         public Color Color;
         public float Magnitude;
-        public float Spectrum;
+        public StarElements Spectrum;
         public DataPayload (string name) {
             Name = name;
             Coordinates = default;
@@ -43,6 +43,13 @@ namespace AstroLab {
             Color = default;
             Magnitude = mag;
             Spectrum = default;
+        }
+        public DataPayload (StarElements spectrum) {
+            Name = default;
+            Coordinates = default;
+            Color = default;
+            Magnitude = default;
+            Spectrum = spectrum;
         }
     }
 
@@ -75,7 +82,7 @@ namespace AstroLab {
             return RightAscension.Equals(((EqCoordinates)obj).RightAscension)
                 && Declination.Equals(((EqCoordinates)obj).Declination);
         }
-        public bool Zero() {
+        public bool IsZero() {
             return RightAscension.Equals(Vector3.zero)
                 && Declination.Equals(Vector3.zero);
         }
@@ -108,10 +115,13 @@ namespace AstroLab {
                 DataText.SetText(Payload.Magnitude.ToString());
             } else if (!Payload.Color.Equals(default)) {
                 DataGraphic.color = Payload.Color;
-            } else if (!Payload.Coordinates.Zero()) {
+            } else if (!Payload.Coordinates.IsZero()) {
                 DataText.SetText(Payload.Coordinates.ToString());
             } else if (!Payload.Spectrum.Equals(default)) {
-                Log.Warn("[DataSource] Spectrum graphics unimplemented!");
+                if (DataGraphic is Spectrograph) {
+                    Spectrograph spec = (Spectrograph)DataGraphic;
+                    spec.DisplaySpectrum(Payload.Spectrum);
+                }
             } else {
                 Log.Warn("[DataSource] All default payload! Unimplemented?");
                 return;
