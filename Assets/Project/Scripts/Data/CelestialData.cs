@@ -32,6 +32,26 @@ namespace AstroLab
         [SerializeField] private bool m_useOverrideFocusVisual;
         [SerializeField] private GameObject m_overrideFocusVisual;
 
+        public static DataPayload ToPayload(CelestialData inData, DraggableFlags mask) {
+            DataPayload outData = new DataPayload();
+            if (mask.HasFlag(DraggableFlags.Name)) {
+                outData.Name = inData.Name;
+            }
+            if (mask.HasFlag(DraggableFlags.Coords)) {
+                outData.Coordinates = new EqCoordinates(inData.RA, inData.Decl);
+            }
+            if (mask.HasFlag(DraggableFlags.Color)) {
+                outData.Color = inData.OverrideMat.color;
+            }
+            if (mask.HasFlag(DraggableFlags.Magnitude)) {
+                outData.Magnitude = inData.Magnitude;
+            }
+            if (mask.HasFlag(DraggableFlags.Spectrum)) {
+                outData.Spectrum = inData.Spectrum;
+            }
+            return outData;
+        }
+
 
         public string Name { get { return m_name; } }
         public Vector3 RA { get { return m_rightAscension; } }

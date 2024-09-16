@@ -12,8 +12,12 @@ namespace AstroLab {
     [CreateAssetMenu(menuName = "AstroLab/Create Puzzle Data")]
 
     public class PuzzleData : ScriptableObject {
-        [SerializeField] private PuzzleObjectRef[] m_PuzzleObjects;
+        [SerializeField] private PuzzleObjectRef[] m_PuzzleRefs;
         [SerializeField] private string[] m_Clues;
+
+
+        public PuzzleObjectRef[] PuzzleRefs { get { return m_PuzzleRefs; } }
+        public string[] Clues { get { return m_Clues; } }
     }
 
 

@@ -12,6 +12,20 @@ namespace AstroLab {
 
         [SerializeField] private CelestialData RefObject;
 
+
+        public void SetRef(CelestialData data) {
+            RefObject = data;
+        }
+
+        public void PuzzleRefPopulate(PuzzleObjectRef pObj) {
+            RefObject = pObj.RefObject;
+            StartingValues = CelestialData.ToPayload(pObj.RefObject, pObj.ShowProperties);
+            PopulateStartingValues();
+            RefToSolutionVals();
+        }
+
+
+
         [ContextMenu("Populate Starting Values")]
         public void PopulateStartingValues() {
             for (int i = 0; i < Slots.Length; i++) {
