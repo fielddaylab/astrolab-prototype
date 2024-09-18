@@ -26,19 +26,19 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 43cf997479c7b1648bc4df1c83250333, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 512
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17469192, g: 0.2185077, b: 0.30077597, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -639,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &596230156
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1463,10 +1463,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1784728261}
     m_Modifications:
+    - target: {fileID: 1722963813782471928, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 7ef02e9d81fb1f64b85630eeb15d94c9, type: 2}
+    - target: {fileID: 1722963813782471932, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
+      propertyPath: m_renderTex
+      value: 
+      objectReference: {fileID: 8400000, guid: 7ef02e9d81fb1f64b85630eeb15d94c9, type: 2}
+    - target: {fileID: 1722963813782471932, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
+      propertyPath: m_fallbackMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cf997479c7b1648bc4df1c83250333, type: 2}
     - target: {fileID: 1722963813782471932, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
       propertyPath: m_focusCanvas
       value: 
       objectReference: {fileID: 74772471}
+    - target: {fileID: 1722963813782471935, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
+      propertyPath: m_CustomSkybox
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cf997479c7b1648bc4df1c83250333, type: 2}
     - target: {fileID: 1722963814198416462, guid: afeba2556c6be2447ae6740a6b732946, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4398,7 +4414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5068986546201449257, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.08703613
+      value: 0.06744385
       objectReference: {fileID: 0}
     - target: {fileID: 5078577928483592518, guid: 005d4cd2f1886f44ea44c831dcfb1f5f, type: 3}
       propertyPath: m_AnchorMax.y
