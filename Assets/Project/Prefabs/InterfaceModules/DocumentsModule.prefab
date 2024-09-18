@@ -917,6 +917,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1382012353175599924, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: Solution.Spectrum
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382012353175599924, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: Solution.Magnitude
       value: 2.08
       objectReference: {fileID: 0}
@@ -1969,6 +1973,10 @@ PrefabInstance:
       value: 0.79215693
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: Solution.Spectrum
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: Solution.Magnitude
       value: 2.56
       objectReference: {fileID: 0}
@@ -1978,19 +1986,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669792757732369514, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Magnitude
@@ -2373,6 +2381,10 @@ PrefabInstance:
       value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 5732938515142061786, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: Solution.Spectrum
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732938515142061786, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: Solution.Magnitude
       value: 1.35
       objectReference: {fileID: 0}
@@ -2653,6 +2665,10 @@ PrefabInstance:
       value: 0.79215693
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: Solution.Spectrum
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: Solution.Magnitude
       value: 2.14
       objectReference: {fileID: 0}
@@ -2662,19 +2678,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6651233270880856590, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: StartingValues.Magnitude
@@ -2912,6 +2928,30 @@ PrefabInstance:
       propertyPath: FilledData.Coordinates.RightAscension.z
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7239627528006946004, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_text
+      value: Denebola is a different color than Algieba
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239627528006946004, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239627528006946004, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239627528006946004, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258863319988354864, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274840475501732537, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: PuzzleData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9636f1322f95ff04ea18314a36b04707, type: 2}
     - target: {fileID: 7274840475501732537, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: PuzzleObjects.Array.size
       value: 4
@@ -2920,6 +2960,22 @@ PrefabInstance:
       propertyPath: PuzzleObjects.Array.data[3]
       value: 
       objectReference: {fileID: 7604635157166977680}
+    - target: {fileID: 7283120328074507190, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_text
+      value: The brightest star contains no Iron
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283120328074507190, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283120328074507190, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283120328074507190, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7332219867829482408, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3483,6 +3539,22 @@ PrefabInstance:
     - target: {fileID: 8712288650118045507, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: SlotLocked
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732284153573659785, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_text
+      value: Algieba is brighter than Zosma
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732284153573659785, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732284153573659785, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732284153573659785, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8804298567968283509, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: SlotFilled

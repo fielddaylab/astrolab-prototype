@@ -17,6 +17,9 @@ namespace AstroLab {
         private void Start() {
             m_FinishButton.onClick.AddListener(OnFinishClicked);
             m_FinishButton.interactable = false;
+
+            GameMgr.Events.Register(GameEvents.DataSlotFilled, OnSlotFilled);
+
             if (PuzzleData != null) {
                 PopulateFromPuzzleData();
             }
@@ -34,7 +37,7 @@ namespace AstroLab {
 
         [ContextMenu("Populate Solutions from Refs")]
         public void SetObjSolutionFromRefs() {
-            for (int i =0; i < PuzzleObjects.Length; i++) {
+            for (int i = 0; i < PuzzleObjects.Length; i++) {
                 PuzzleObjects[i].RefToSolutionVals();
             }
         }
@@ -46,19 +49,38 @@ namespace AstroLab {
             }
         }
 
+        private void OnSlotFilled() {
+            bool allFilled = EvaluateFilled();
+            m_FinishButton.interactable = allFilled;
+            m_FinishButton.gameObject.SetActive(allFilled);
+        }
+
         public bool EvaluateSolved() {
             for (int i = 0; i < PuzzleObjects.Length; i++) {
                 if (!PuzzleObjects[i].EvaluateSolved()) {
                     return false;
                 }
             }
-            m_FinishButton.interactable = true;
-            m_FinishButton.gameObject.SetActive(true);
+            return true;
+        }
+
+        public bool EvaluateFilled() {
+            for (int i = 0; i < PuzzleObjects.Length; i++) {
+                if (!PuzzleObjects[i].EvaluateFilled()) {
+                    return false;
+                }
+            }
             return true;
         }
 
         public void OnFinishClicked() {
-            Log.Warn("[PostcardPuzzle] Clicked Finish! TODO: submit puzzle");
+            Log.Warn("[PostcardPuzzle] Clicked Finish!");
+            if (EvaluateSolved()) {
+                Destroy(this);
+                Log.Warn("[PostcardPuzzle] CORRECT! :D");
+                return;
+            }
+            Log.Warn("[PostcardPuzzle] INCORRECT D:");
         }
 
     }

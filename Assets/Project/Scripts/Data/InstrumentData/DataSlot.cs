@@ -39,6 +39,7 @@ namespace AstroLab {
                     FilledData = dragged.GetPayload();
                     SlotFilled = true;
                     DisplayFilledData();
+                    GameMgr.Events.Dispatch(GameEvents.DataSlotFilled, SlotType);
                 }
             }
         }
@@ -48,6 +49,8 @@ namespace AstroLab {
             FilledData = NullData;
             DisplayFilledData();
             SlotFilled = false;
+            GameMgr.Events.Dispatch(GameEvents.DataSlotCleared, SlotType);
+
         }
 
         public void SetData(DataPayload payload, bool lockData = false) {
@@ -69,7 +72,7 @@ namespace AstroLab {
                 case DraggableFlags.Coords:
                     return !FilledData.Coordinates.IsZero();
                 case DraggableFlags.Color:
-                    return !FilledData.Color.Equals(Color.white);
+                    return !FilledData.Color.Equals(Color.clear);
                 case DraggableFlags.Magnitude:
                     return !FilledData.Magnitude.Equals(default);
                 case DraggableFlags.Spectrum:

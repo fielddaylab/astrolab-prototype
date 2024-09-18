@@ -9,9 +9,7 @@ namespace AstroLab {
 
         [SerializeField] public DataPayload StartingValues;
         [SerializeField] private DataPayload Solution;
-
         [SerializeField] private CelestialData RefObject;
-
 
         public void SetRef(CelestialData data) {
             RefObject = data;
@@ -23,8 +21,6 @@ namespace AstroLab {
             PopulateStartingValues();
             RefToSolutionVals();
         }
-
-
 
         [ContextMenu("Populate Starting Values")]
         public void PopulateStartingValues() {
@@ -74,6 +70,15 @@ namespace AstroLab {
             refVals.Magnitude = RefObject.Magnitude;
             refVals.Spectrum = RefObject.Spectrum;
             Solution = refVals;
+        }
+
+        public bool EvaluateFilled() {
+            for (int i = 0; i < Slots.Length; i++) {
+                if (!Slots[i].SlotFilled) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool EvaluateSolved() {

@@ -24,5 +24,9 @@ namespace AstroLab
 
         static public readonly StringHash32 DraggableGrabbed = "world:draggable-grabbed";
         static public readonly StringHash32 DraggableDropped = "world:draggable-dropped";
+
+        static public readonly StringHash32 DataSlotFilled = "world:data-slot-filled";
+        static public readonly StringHash32 DataSlotCleared = "world:data-slot-cleared";
+
     }
 }
