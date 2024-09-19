@@ -19,7 +19,7 @@ MonoBehaviour:
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
-  m_identifyEntryID: Main Sequence Star 1
+  m_identifyEntryID: MainStars_A
   m_magnitude: 3.32
   m_color: bluish white
   m_spectrum: 31

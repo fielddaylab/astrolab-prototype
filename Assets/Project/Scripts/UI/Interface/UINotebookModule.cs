@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace AstroLab
 {
@@ -80,7 +79,7 @@ namespace AstroLab
             m_currGalaxyEntryIndex = 0;
 
             m_entryTitleText.text = string.Empty;
-            //m_entryColorText.text = string.Empty;
+            m_entryColorText.text = string.Empty;
             CurrEntry = null;
 
             m_entryPage.SetActive(false);
@@ -228,7 +227,7 @@ namespace AstroLab
             CurrEntry = entryData;
 
             m_entryTitleText.SetText(entryData.Title);
-            //m_entryColorText.SetText(entryData.Color);
+            m_entryColorText.SetText(entryData.Color);
         }
 
         #endregion // Helpers

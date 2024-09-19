@@ -16,4 +16,3 @@ namespace AstroLab
         public string Color { get { return m_color; } }
     }
 }
-

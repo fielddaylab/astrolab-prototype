@@ -19,7 +19,7 @@ MonoBehaviour:
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
-  m_identifyEntryID: Red Giant
+  m_identifyEntryID: MainStars_K
   m_magnitude: 3.88
   m_color: light orange
   m_spectrum: -1

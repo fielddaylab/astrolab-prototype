@@ -19,7 +19,7 @@ MonoBehaviour:
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
-  m_identifyEntryID: Giant F
+  m_identifyEntryID: MainStars_F
   m_magnitude: 3.33
   m_color: yellowish white
   m_spectrum: -1

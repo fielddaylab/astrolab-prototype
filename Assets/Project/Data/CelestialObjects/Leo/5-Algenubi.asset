@@ -19,7 +19,7 @@ MonoBehaviour:
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0
   m_declinationRadian: 0
-  m_identifyEntryID: 
+  m_identifyEntryID: MainStars_G
   m_magnitude: 2.98
   m_color: yellow
   m_spectrum: -1
