@@ -15,16 +15,16 @@ namespace AstroLab
         [SerializeField] private Button[] m_ItemButtons;
         [SerializeField] private Button m_closeButton;
 
-        [SerializeField] private Button m_prevButton;
-        [SerializeField] private Button m_nextButton;
-        [SerializeField] private Button m_gridButton;
+        //[SerializeField] private Button m_prevButton;
+        //[SerializeField] private Button m_nextButton;
+        //[SerializeField] private Button m_gridButton;
         [SerializeField] private Button m_identifyButton;
 
         [SerializeField] private GameObject m_entryPage;
         [SerializeField] private TMP_Text m_entryTitleText;
         //[SerializeField] private TMP_Text m_entryColorText;
 
-        [SerializeField] private GameObject m_gridPage;
+        // [SerializeField] private GameObject m_gridPage;
 
         [SerializeField] private CategoryNotebookEntryData[] m_allEntries;
 
@@ -47,7 +47,7 @@ namespace AstroLab
         private int m_currNebulaEntryIndex;
         private int m_currGalaxyEntryIndex;
 
-        private NotebookFlags m_currCategory;
+        private NotebookFlags m_currCategoryFlags;
 
         public override void Init()
         {
@@ -56,9 +56,9 @@ namespace AstroLab
             m_closeButton.onClick.AddListener(HandleCloseClicked);
             m_identifyButton.onClick.AddListener(HandleIdentifyClicked);
 
-            m_gridButton.onClick.AddListener(HandleGridClicked);
-            m_prevButton.onClick.AddListener(HandlePrevClicked);
-            m_nextButton.onClick.AddListener(HandleNextClicked);
+            //m_gridButton.onClick.AddListener(HandleGridClicked);
+            //m_prevButton.onClick.AddListener(HandlePrevClicked);
+            //m_nextButton.onClick.AddListener(HandleNextClicked);
 
             m_identifyButton.interactable = false;
 
@@ -91,13 +91,13 @@ namespace AstroLab
 
             m_entryTitleText.text = string.Empty;
             // m_entryColorText.text = string.Empty;
-            CurrCategory = null;
+            CurrCategory = m_allEntries[0];
 
-            m_entryPage.SetActive(false);
-            m_gridPage.SetActive(true);
-            m_gridButton.gameObject.SetActive(false);
-            m_prevButton.gameObject.SetActive(false);
-            m_nextButton.gameObject.SetActive(false);
+            m_entryPage.SetActive(true);
+            // m_gridPage.SetActive(true);
+            //m_gridButton.gameObject.SetActive(false);
+            //m_prevButton.gameObject.SetActive(false);
+            //m_nextButton.gameObject.SetActive(false);
         }
 
         public override void Open()
@@ -167,13 +167,13 @@ namespace AstroLab
             if ((category & NotebookFlags.Galaxies) != 0) { PopulateCategoryPage(m_galaxyEntries[m_currGalaxyEntryIndex]); }
 
             m_entryPage.SetActive(true);
-            m_gridPage.SetActive(false);
+            //m_gridPage.SetActive(false);
 
-            m_gridButton.gameObject.SetActive(true);
-            m_prevButton.gameObject.SetActive(true);
-            m_nextButton.gameObject.SetActive(true);
+            //m_gridButton.gameObject.SetActive(true);
+            //m_prevButton.gameObject.SetActive(true);
+            //m_nextButton.gameObject.SetActive(true);
 
-            m_currCategory = category;
+            m_currCategoryFlags = category;
         }
 
         private void HandleUnfocus()
@@ -184,12 +184,12 @@ namespace AstroLab
 
         private void HandleGridClicked()
         {
-            m_gridPage.SetActive(true);
+            //m_gridPage.SetActive(true);
             m_entryPage.SetActive(false);
 
-            m_gridButton.gameObject.SetActive(false);
-            m_prevButton.gameObject.SetActive(false);
-            m_nextButton.gameObject.SetActive(false);
+            //m_gridButton.gameObject.SetActive(false);
+            //m_prevButton.gameObject.SetActive(false);
+            //m_nextButton.gameObject.SetActive(false);
         }
 
         private void HandlePrevClicked()
@@ -204,42 +204,42 @@ namespace AstroLab
 
         private void SwitchPage(int delta)
         {
-            if ((m_currCategory & NotebookFlags.Constellations) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.Constellations) != 0) {
                 if (m_currConstellationEntryIndex + delta > -1 && m_currConstellationEntryIndex + delta < m_constellationEntries.Count)
                 {
                     PopulateCategoryPage(m_constellationEntries[m_currConstellationEntryIndex + delta]);
                     m_currConstellationEntryIndex += delta;
                 }
             }
-            if ((m_currCategory & NotebookFlags.Planets) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.Planets) != 0) {
                 if (m_currPlanetEntryIndex + delta > -1 && m_currPlanetEntryIndex + delta < m_planetEntries.Count)
                 {
                     PopulateCategoryPage(m_planetEntries[m_currPlanetEntryIndex + delta]);
                     m_currPlanetEntryIndex += delta;
                 }
             }
-            if ((m_currCategory & NotebookFlags.MainSequenceStars) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.MainSequenceStars) != 0) {
                 if (m_currMainStarEntryIndex + delta > -1 && m_currMainStarEntryIndex + delta < m_mainStarEntries.Count)
                 {
                     PopulateCategoryPage(m_mainStarEntries[m_currMainStarEntryIndex + delta]);
                     m_currMainStarEntryIndex += delta;
                 }
             }
-            if ((m_currCategory & NotebookFlags.OtherStars) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.OtherStars) != 0) {
                 if (m_currOtherStarEntryIndex + delta > -1 && m_currOtherStarEntryIndex + delta < m_otherStarEntries.Count)
                 {
                     PopulateCategoryPage(m_otherStarEntries[m_currOtherStarEntryIndex + delta]);
                     m_currOtherStarEntryIndex += delta;
                 }
             }
-            if ((m_currCategory & NotebookFlags.Nebulae) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.Nebulae) != 0) {
                 if (m_currNebulaEntryIndex + delta > -1 && m_currNebulaEntryIndex + delta < m_nebulaEntries.Count)
                 {
                     PopulateCategoryPage(m_nebulaEntries[m_currNebulaEntryIndex + delta]);
                     m_currNebulaEntryIndex += delta;
                 }
             }
-            if ((m_currCategory & NotebookFlags.Galaxies) != 0) {
+            if ((m_currCategoryFlags & NotebookFlags.Galaxies) != 0) {
                 if (m_currGalaxyEntryIndex + delta > -1 && m_currGalaxyEntryIndex + delta < m_galaxyEntries.Count)
                 {
                     PopulateCategoryPage(m_galaxyEntries[m_currGalaxyEntryIndex + delta]);
