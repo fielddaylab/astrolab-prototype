@@ -10,6 +10,9 @@ namespace AstroLab
 {
     public class UICategoryNotebookModule : UIInterfaceModule
     {
+
+        [SerializeField] private ReviewQueue m_Queue;
+
         [Space(5)]
         [Header("Notebook")]
         [SerializeField] private Button[] m_ItemButtons;
@@ -140,15 +143,17 @@ namespace AstroLab
 
             string guessId = CurrCategory.Title + "_" + CurrItem;
             string realId = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.IdentifyEntryID;
-            if (guessId.Equals(realId))
-            {
-                FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;
 
-                GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
-                Log.Msg("Item identified! {0}", guessId);
-            } else {
-                Log.Msg("Incorrect identification :( It's actually {0}", realId);
-            }
+            m_Queue.AddNewItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 5f, 5);
+            //if (guessId.Equals(realId))
+            //{
+            //    FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;
+
+            //    GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
+            //    Log.Msg("Item identified! {0}", guessId);
+            //} else {
+            //    Log.Msg("Incorrect identification :( It's actually {0}", realId);
+            //}
             m_identifyButton.interactable = false;
         }
 

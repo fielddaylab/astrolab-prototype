@@ -8,6 +8,11 @@ namespace AstroLab
     public class GameConsts : MonoBehaviour
     {
         public int SkyboxDist = 1000;
+
+        public int IncorrectIDPenalty = -1;
+
+        public Color CorrectColor = Color.green;
+        public Color IncorrectColor = Color.red;
     }
 
     static public class GameEvents
@@ -29,4 +34,5 @@ namespace AstroLab
         static public readonly StringHash32 DataSlotCleared = "world:data-slot-cleared";
 
     }
+
 }
