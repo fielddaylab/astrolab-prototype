@@ -57,7 +57,7 @@ namespace AstroLab
 
             GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
             GameMgr.Events.Register(GameEvents.CelestialObjIdentified, HandleCelestialObjIdentified);
-            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
+            GameMgr.Events.Register(GameEvents.UnfocusDown, HandleUnfocus);
         }
 
         public override void Open()

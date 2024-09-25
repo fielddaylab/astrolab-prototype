@@ -33,6 +33,7 @@ namespace AstroLab
 
         [Header("Controls")]
         [SerializeField] private Toggle m_mouseControlToggle;
+        [SerializeField] private Toggle m_mouseControlAutoToggle;
         [SerializeField] private CameraController m_camController;
 
 
@@ -60,6 +61,9 @@ namespace AstroLab
 
             m_mouseControlToggle.isOn = m_camController.EnableMouseControls;
             m_mouseControlToggle.onValueChanged.AddListener(HandleMouseControlToggleChanged);
+
+            m_mouseControlAutoToggle.isOn = m_camController.EnableMouseAutoControls;
+            m_mouseControlAutoToggle.onValueChanged.AddListener(HandleMouseAutoControlToggleChanged);
 
             m_constellationToggle.onValueChanged.AddListener(HandleConstellationsToggleChanged);
             m_planetsToggle.onValueChanged.AddListener(HandlePlanetsToggleChanged);
@@ -192,6 +196,11 @@ namespace AstroLab
         private void HandleMouseControlToggleChanged(bool newVal)
         {
             m_camController.EnableMouseControls = newVal;
+        }
+
+        private void HandleMouseAutoControlToggleChanged(bool newVal)
+        {
+            m_camController.EnableMouseAutoControls = newVal;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace AstroLab
         [SerializeField] private Transform m_camRoot;
         [SerializeField] private Transform m_playerRoot;
         public bool EnableMouseControls;
+        public bool EnableMouseAutoControls;
 
         [SerializeField] private RenderTexture m_renderTex;
         [SerializeField] private Vector2Int m_defaultRenderTexDims;
@@ -26,6 +27,7 @@ namespace AstroLab
         [SerializeField] private float m_lookIncrement;
         [SerializeField] private Vector2 m_lookXClamp; // rotation limits in given direction (x is min X, y is max X)
         [SerializeField] private Vector2 m_lookYClamp; // rotation limits in given direction (x is min Y, y is max Y)
+        [SerializeField] private float m_lookDragMod;
 
         [Space(5)]
         [Header("Zoom")]
@@ -40,6 +42,9 @@ namespace AstroLab
 
         private float m_vertLook; // accumulated rotation vertically
         private float m_horizLook; // accumulated rotation horizontally
+
+        private bool m_mouseDragLookActive;
+        private Vector3 m_prevMousePos;
 
         #region Unity Callbacks
 
@@ -57,6 +62,11 @@ namespace AstroLab
             m_renderTex.width = m_defaultRenderTexDims.x;
             m_renderTex.height = m_defaultRenderTexDims.y;
             m_renderTex.Create();
+
+            GameMgr.Events.Register(GameEvents.UnfocusDown, HandleUnfocusDown);
+            GameMgr.Events.Register(GameEvents.UnfocusUp, HandleUnfocusUp);
+
+            m_mouseDragLookActive = false;
         }
 
         private void Update()
@@ -99,44 +109,65 @@ namespace AstroLab
 
         private void ProcessLook()
         {
+            if (EnableMouseAutoControls)
+            {
+                ProcessMouseAutoLook();
+            }
             if (EnableMouseControls)
             {
-                ProcessMouseLook();
+                ProcessMouseDragLook();
             }
 
             ProcessKeyboardLook();
         }
 
-        private void ProcessMouseLook()
+        private void ProcessMouseAutoLook()
         {
             var cursorPos = m_camera.ScreenToViewportPoint(Input.mousePosition);
 
             // Look X
-            if (/*cursorPos.x > 0 && */cursorPos.x < m_lookThreshold)
+            if (cursorPos.x < m_lookThreshold)
             {
                 // look left
-                var adjustedSpeed = (/*cursorPos.x > 0 && */cursorPos.x < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (cursorPos.x < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustHorizLook(-adjustedSpeed * Time.deltaTime);
             }
-            else if (/*cursorPos.x < 1 && */cursorPos.x > 1 - m_lookThreshold)
+            else if (cursorPos.x > 1 - m_lookThreshold)
             {
                 // look right
-                var adjustedSpeed = (/*cursorPos.x < 1 && */cursorPos.x > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (cursorPos.x > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustHorizLook(adjustedSpeed * Time.deltaTime);
             }
 
             // Look Y
-            if (/*cursorPos.y > 0 && */cursorPos.y < m_lookThreshold)
+            if (cursorPos.y < m_lookThreshold)
             {
                 // look down
-                var adjustedSpeed = (/*cursorPos.y > 0 && */cursorPos.y < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (cursorPos.y < m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustVertLook(adjustedSpeed * Time.deltaTime);
             }
-            else if (/*cursorPos.y < 1 && */cursorPos.y > 1 - m_lookThreshold)
+            else if (cursorPos.y > 1 - m_lookThreshold)
             {
                 // look up
-                var adjustedSpeed = (/*cursorPos.y < 1 && */cursorPos.y > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
+                var adjustedSpeed = (cursorPos.y > 1 - m_lookRapidThreshold) ? m_lookRapidSpeed : m_lookSpeed;
                 AdjustVertLook(-adjustedSpeed * Time.deltaTime);
+            }
+        }
+
+        private void ProcessMouseDragLook()
+        {
+            if (m_mouseDragLookActive)
+            {
+                var cursorPos = m_camera.ScreenToViewportPoint(Input.mousePosition);
+                var deltaPos = m_prevMousePos - cursorPos;
+
+                // look horizontal
+                AdjustHorizLook(deltaPos.x * m_lookDragMod);
+
+                // look vertical
+                AdjustVertLook(-deltaPos.y * m_lookDragMod);
+
+                m_prevMousePos = cursorPos;
             }
         }
 
@@ -247,5 +278,21 @@ namespace AstroLab
 
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
+
+        #region Handlers
+
+        private void HandleUnfocusDown()
+        {
+            m_mouseDragLookActive = true;
+            m_prevMousePos = m_camera.ScreenToViewportPoint(Input.mousePosition);
+        }
+
+        private void HandleUnfocusUp()
+        {
+            m_mouseDragLookActive = false;
+            m_prevMousePos = Vector3.zero;
+        }
+
+        #endregion // Handlers
     }
 }

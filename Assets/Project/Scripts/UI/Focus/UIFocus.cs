@@ -40,7 +40,7 @@ namespace AstroLab
 
             Outline.enabled = false;
 
-            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
+            GameMgr.Events.Register(GameEvents.UnfocusDown, HandleUnfocus);
             GameMgr.Events.Register<UIFocusable>(GameEvents.FocusableClicked, HandleFocusableClicked);
         }
 

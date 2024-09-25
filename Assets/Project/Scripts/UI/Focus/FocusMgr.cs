@@ -11,7 +11,7 @@ namespace AstroLab
 
         public UIFocusable LastSelectedFocusable;
 
-        [SerializeField] private Button m_unfocusButton;
+        [SerializeField] private UnfocusZone m_unfocusButton;
 
         private void Awake()
         {
@@ -25,15 +25,26 @@ namespace AstroLab
                 return;
             }
 
-            m_unfocusButton.onClick.AddListener(HandleUnfocusClicked);
+            m_unfocusButton.onPointerDown.AddListener(HandleUnfocusPointerDown);
+            m_unfocusButton.onPointerUp.AddListener(HandleUnfocusPointerUp);
         }
 
-        private void HandleUnfocusClicked()
+        private void HandleUnfocusPointerDown()
         {
             LastSelectedFocusable = null;
 
             // set focusable to null by default
-            GameMgr.Events.Dispatch(GameEvents.Unfocus);
+            GameMgr.Events.Dispatch(GameEvents.UnfocusDown);
+
+            Debug.Log("[Focus] Unfocus down");
+        }
+
+        private void HandleUnfocusPointerUp()
+        {
+            // set focusable to null by default
+            GameMgr.Events.Dispatch(GameEvents.UnfocusUp);
+
+            Debug.Log("[Focus] Unfocus up");
         }
     }
 }

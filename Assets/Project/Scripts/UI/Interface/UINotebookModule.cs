@@ -58,7 +58,7 @@ namespace AstroLab
 
             GameMgr.Events.Register(GameEvents.NotebookUnlocksChanged, HandleNotebookUnlocksChanged);
             GameMgr.Events.Register<NotebookFlags>(GameEvents.NotebookTabClicked, HandleNotebookTabClicked);
-            GameMgr.Events.Register(GameEvents.Unfocus, HandleUnfocus);
+            GameMgr.Events.Register(GameEvents.UnfocusDown, HandleUnfocus);
 
 
             foreach (var entry in m_allEntries)
