@@ -16,6 +16,8 @@ namespace AstroLab
 
         public Texture2D DefaultCursor;
         public Texture2D GrabCursor;
+
+        public Color[] NotationColors;
     }
 
     static public class GameEvents

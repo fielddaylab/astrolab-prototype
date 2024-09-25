@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 3994788775863373326}
   - component: {fileID: 3994788775863373324}
   - component: {fileID: 1379478973388522621}
+  - component: {fileID: 4564181954869662572}
   m_Layer: 5
   m_Name: PostcardBase
   m_TagString: Untagged
@@ -281,11 +282,23 @@ MonoBehaviour:
   BodyGroup: {fileID: 2525525844485587102}
   GrabScaleFactor: 1.2
   m_ChangesCursor: 1
-  m_LiftOnHover: 1
+  m_LiftOnHover: 0
   m_Shadow: {fileID: 6571084648968094461}
   m_ShadowScaleFactor: 1.1
   m_ShadowOffset: 40
   m_NewIcon: {fileID: 2242188933972795247}
+--- !u!114 &4564181954869662572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994788775863373327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0fb82bf6ae1394fae9d41a5d70ce1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4273592213828271825
 GameObject:
   m_ObjectHideFlags: 0

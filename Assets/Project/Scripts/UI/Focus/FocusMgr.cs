@@ -35,16 +35,12 @@ namespace AstroLab
 
             // set focusable to null by default
             GameMgr.Events.Dispatch(GameEvents.UnfocusDown);
-
-            Debug.Log("[Focus] Unfocus down");
         }
 
         private void HandleUnfocusPointerUp()
         {
             // set focusable to null by default
             GameMgr.Events.Dispatch(GameEvents.UnfocusUp);
-
-            Debug.Log("[Focus] Unfocus up");
         }
     }
 }
