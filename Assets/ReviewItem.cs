@@ -66,8 +66,7 @@ namespace AstroLab {
         }
 
         private void HandleButtonPressed() {
-            // TODO
-            // AddXP(m_Points)
+            PointsMgr.Instance.AddXP(m_Points);
             m_Queue.Items.Remove(this);
             Destroy(gameObject);
         }

@@ -24,6 +24,7 @@ namespace AstroLab {
         [SerializeField] protected CanvasGroup BodyGroup;
         [SerializeField] protected float GrabScaleFactor = 1f;
 
+
         [Header("Hover")]
         [SerializeField] protected bool m_ChangesCursor = true;
         [SerializeField] protected bool m_LiftOnHover = true;
@@ -31,6 +32,8 @@ namespace AstroLab {
         protected bool m_Grabbed = false;
         protected bool m_OverMain = false;
         protected float m_LiftOrigin;
+
+        private Vector3 MouseOffset;
 
         #region Unity Callbacks
 
@@ -59,7 +62,7 @@ namespace AstroLab {
 
         protected virtual void MoveWithMouse(PointerEventData eventData = null) {
             if (eventData != null) {
-                transform.position = eventData.pointerCurrentRaycast.worldPosition;
+                transform.position = eventData.pointerCurrentRaycast.worldPosition + MouseOffset;
             } else {
                 // TODO: make a raycast, move draggable to mouse pointer in canvas coords
             }
@@ -94,6 +97,7 @@ namespace AstroLab {
 
         #region Pointer Events
         public virtual void OnBeginDrag(PointerEventData eventData) {
+            MouseOffset = transform.position - eventData.pointerCurrentRaycast.worldPosition;
             SetGrabbed(true, true);
         }
 

@@ -144,7 +144,8 @@ namespace AstroLab
             string guessId = CurrCategory.Title + "_" + CurrItem;
             string realId = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.IdentifyEntryID;
 
-            m_Queue.AddNewItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 5f, 5);
+            // TODO: dynamic points assignment
+            m_Queue.AddNewItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 7f, 3);
             //if (guessId.Equals(realId))
             //{
             //    FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;
