@@ -30,11 +30,13 @@ namespace AstroLab
             {
                 m_NoteGroup.alpha = 0;
                 m_NoteGroup.interactable = false;
+                m_NoteGroup.blocksRaycasts = false;
             }
             else
             {
                 m_NoteGroup.alpha = 1;
                 m_NoteGroup.interactable = true;
+                m_NoteGroup.blocksRaycasts = true;
             }
 
             m_IsOpened = !m_IsOpened;
