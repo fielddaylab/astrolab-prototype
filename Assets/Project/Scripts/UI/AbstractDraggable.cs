@@ -3,6 +3,7 @@ using AstroLab;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace AstroLab {
     [Flags]
@@ -15,15 +16,30 @@ namespace AstroLab {
         Spectrum = 0x20,
     }
 
-    public abstract class AbstractDraggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler {
+    public abstract class AbstractDraggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+
+        private static float LIFT_DISTANCE = 5;
 
         [SerializeField] public DraggableFlags DraggableFlags;
         [SerializeField] protected CanvasGroup BodyGroup;
         [SerializeField] protected float GrabScaleFactor = 1f;
 
+        [Header("Hover")]
+        [SerializeField] protected bool m_ChangesCursor = true;
+        [SerializeField] protected bool m_LiftOnHover = true;
+
         protected bool m_Grabbed = false;
+        protected bool m_OverMain = false;
+        protected float m_LiftOrigin;
 
+        #region Unity Callbacks
 
+        private void Awake()
+        {
+            m_LiftOrigin = BodyGroup.transform.localPosition.y;
+        }
+
+        #endregion // UnityCallbacks
 
         protected virtual void SetGrabbed(bool grabbed, bool dragging) {
             if (m_Grabbed == grabbed) return;
@@ -49,6 +65,32 @@ namespace AstroLab {
             }
         }
 
+        protected virtual void SetDefaultCursor() {
+            GameConsts consts = FindObjectOfType<GameConsts>();
+
+            Cursor.SetCursor(consts.DefaultCursor, Vector2.zero, CursorMode.Auto);
+        }
+
+        protected virtual void SetGrabCursor() {
+            GameConsts consts = FindObjectOfType<GameConsts>();
+
+            Cursor.SetCursor(consts.GrabCursor, Vector2.zero, CursorMode.Auto);
+        }
+
+        protected virtual void SetLiftPos(bool lifted) {
+            if (lifted) {
+                Vector2 currPos = BodyGroup.transform.localPosition;
+                currPos.y = m_LiftOrigin + LIFT_DISTANCE;
+                BodyGroup.transform.localPosition = currPos;
+            }
+            else
+            {
+                Vector2 currPos = BodyGroup.transform.localPosition;
+                currPos.y = m_LiftOrigin;
+                BodyGroup.transform.localPosition = currPos;
+            }
+        }
+
 
         #region Pointer Events
         public virtual void OnBeginDrag(PointerEventData eventData) {
@@ -66,6 +108,33 @@ namespace AstroLab {
         public virtual void OnPointerClick(PointerEventData eventData) {
             // TODO: SetGrabbed(!m_Grabbed, false)
         }
+
+        public virtual void OnPointerEnter(PointerEventData eventData)
+        {
+            m_OverMain = true;
+
+            if (m_ChangesCursor) {
+                SetGrabCursor();
+            }
+            if (m_LiftOnHover) {
+                SetLiftPos(true);
+            }
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData)
+        {
+            m_OverMain = false;
+
+            if (!m_Grabbed) {
+                if (m_ChangesCursor) {
+                    SetDefaultCursor();
+                }
+                if (m_LiftOnHover) {
+                    SetLiftPos(false);
+                }
+            }
+        }
+
         #endregion //Pointer Events
     }
 }

@@ -141,8 +141,12 @@ namespace AstroLab {
             if (grabbed) {
                 transform.SetAsLastSibling();
                 GameMgr.Events.Dispatch(GameEvents.DraggableGrabbed, DraggableFlags);
+                SetGrabCursor();
+                SetLiftPos(true);
             } else {
                 GameMgr.Events.Dispatch(GameEvents.DraggableDropped, DraggableFlags);
+                SetDefaultCursor();
+                SetLiftPos(false);
             }
 
             DragVisual.gameObject.SetActive(grabbed);

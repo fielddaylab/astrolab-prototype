@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkyboxDist: 1000
+  IncorrectIDPenalty: -1
+  CorrectColor: {r: 0, g: 1, b: 0, a: 1}
+  IncorrectColor: {r: 1, g: 0, b: 0, a: 1}
+  DefaultCursor: {fileID: 0}
+  GrabCursor: {fileID: 2800000, guid: 82073a8bfd6b8488a89b8796d500d12d, type: 3}

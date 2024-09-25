@@ -13,6 +13,9 @@ namespace AstroLab
 
         public Color CorrectColor = Color.green;
         public Color IncorrectColor = Color.red;
+
+        public Texture2D DefaultCursor;
+        public Texture2D GrabCursor;
     }
 
     static public class GameEvents
