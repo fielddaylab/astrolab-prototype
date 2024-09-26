@@ -24,10 +24,12 @@ namespace AstroLab
         {
             if (Input.GetMouseButtonDown(1)) {
                 // On right click, find the overlapping interactive object
-
                 m_CurrPointerData = new PointerEventData(EventSystem.current);
                 m_CurrPointerData.position = Input.mousePosition;
+
+
                 List<RaycastResult> results = new List<RaycastResult>();
+                //EventSystem.current.RaycastAll(m_CurrPointerData, results);
                 m_Raycaster.Raycast(m_CurrPointerData, results);
 
                 if (results.Count > 0) {
@@ -40,7 +42,7 @@ namespace AstroLab
                     if (currObj.GetComponent<PlayerNotation>())
                     {
                         Debug.Log("[Notation] Opening existing notation " + results[0].gameObject.name);
-                        OpenExistingNote();
+                        ClickExistingNote(currObj.GetComponent<PlayerNotation>());
                     }
                     // else create new note
                     else
@@ -55,9 +57,9 @@ namespace AstroLab
 
         #region Helpers
 
-        private void OpenExistingNote()
+        private void ClickExistingNote(PlayerNotation notation)
         {
-
+            notation.Click();
         }
 
         private void CreateNewNote(Transform currObj, Vector3 clickPos)

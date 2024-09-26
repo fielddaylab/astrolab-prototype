@@ -22,6 +22,11 @@ namespace AstroLab
             m_DeleteButton.onClick.AddListener(OnDeleteClicked);
         }
 
+        public void Click()
+        {
+            OnMainClicked();
+        }
+
         #region Handlers
 
         private void OnMainClicked()

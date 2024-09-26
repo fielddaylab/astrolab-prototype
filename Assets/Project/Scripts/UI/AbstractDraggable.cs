@@ -77,7 +77,7 @@ namespace AstroLab {
         protected virtual void SetGrabCursor() {
             GameConsts consts = FindObjectOfType<GameConsts>();
 
-            Cursor.SetCursor(consts.GrabCursor, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(consts.GrabCursor, new Vector2(11, 2), CursorMode.Auto);
         }
 
         protected virtual void SetLiftPos(bool lifted) {
