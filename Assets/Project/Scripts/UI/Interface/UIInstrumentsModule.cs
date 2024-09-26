@@ -47,6 +47,10 @@ namespace AstroLab
         [SerializeField] private TMP_Text m_colorText;
         [SerializeField] private DataSource m_colorData;
 
+        [Header("Notes Group")]
+        [SerializeField] private GameObject m_notesGroup;
+        [SerializeField] private TMP_InputField m_notesInput;
+
         private static string UNKNOWN_OBJ_TEXT = "Unknown Object";
 
         public override void Init()
@@ -58,6 +62,8 @@ namespace AstroLab
             GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, HandleInstrumentUnlocksChanged);
             GameMgr.Events.Register(GameEvents.CelestialObjIdentified, HandleCelestialObjIdentified);
             GameMgr.Events.Register(GameEvents.UnfocusDown, HandleUnfocus);
+
+            m_notesInput.onValueChanged.AddListener(HandleNotesInputChanged);
         }
 
         public override void Open()
@@ -71,6 +77,7 @@ namespace AstroLab
                 m_photometerGroup.SetActive(false);
                 m_spectrometerGroup.SetActive(false);
                 m_colorGroup.SetActive(false);
+                m_notesGroup.SetActive(false);
 
                 // Display coordinate input UI
                 DisplayCoordInputGroup();
@@ -78,6 +85,7 @@ namespace AstroLab
             }
 
             m_coordinateInputGroup.SetActive(false);
+            DisplayPlayerNotes();
 
             if (InstrumentsMgr.Instance.AreInstrumentsUnlocked(InstrumentFlags.EquatorialCoords))
             {
@@ -159,6 +167,14 @@ namespace AstroLab
             m_camController.TryLook(pos);
         }
 
+        private void HandleNotesInputChanged(string value)
+        {
+            if (FocusMgr.Instance.LastSelectedFocusable)
+            {
+                FocusMgr.Instance.LastSelectedFocusable.CelestialObj.PlayerNotes = value;
+            }
+        }
+
         #endregion // Handlers
 
         private void DisplayName()
@@ -183,6 +199,12 @@ namespace AstroLab
                 m_objName.text = string.Empty;
                 m_nameData.gameObject.SetActive(false);
             }
+        }
+
+        private void DisplayPlayerNotes()
+        {
+            m_notesInput.SetTextWithoutNotify(FocusMgr.Instance.LastSelectedFocusable.CelestialObj.PlayerNotes);
+            m_notesGroup.SetActive(true);
         }
 
         private void DisplayCoordInputGroup()

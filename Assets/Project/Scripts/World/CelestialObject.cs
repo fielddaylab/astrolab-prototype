@@ -14,6 +14,7 @@ namespace AstroLab
         public MeshFilter MeshFilter;
 
         public bool Identified;
+        public string PlayerNotes;
 
         public void Populate(CelestialData data, bool setInitialPos = true)
         {
