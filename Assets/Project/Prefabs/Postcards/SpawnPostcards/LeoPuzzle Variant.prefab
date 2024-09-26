@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97538578118472346, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_Name
-      value: LeoPuzzle
+      value: LeoPuzzle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 97538578118472347, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_Pivot.x
@@ -808,6 +808,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2243000041275144143, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 420.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243000041275144143, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1226,6 +1230,10 @@ PrefabInstance:
     - target: {fileID: 3852573825701257943, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852573825701257943, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 420.992
       objectReference: {fileID: 0}
     - target: {fileID: 3852573825701257943, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2102,6 +2110,10 @@ PrefabInstance:
     - target: {fileID: 6456708861075769442, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6456708861075769442, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 634.78
       objectReference: {fileID: 0}
     - target: {fileID: 6456708861075769442, guid: b9c5f31db124f4347b5fe18fead74770, type: 3}
       propertyPath: m_AnchoredPosition.x

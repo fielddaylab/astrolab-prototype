@@ -12,7 +12,8 @@ namespace AstroLab {
         [SerializeField] private Timer m_Timer;
         [SerializeField] private int m_Points;
         [SerializeField] private string m_Guess;
-        [SerializeField] private CelestialObject m_RefObject;
+        [SerializeField] private CelestialObject m_RefCelestialObject;
+        [SerializeField] private PostcardPuzzle m_RefPuzzleObject; // TODO: instead of these explicit checks for celestial vs. puzzle, unify under an IReviewable interface
         [Space(4)]
 
         [Header("Components")]
@@ -36,31 +37,65 @@ namespace AstroLab {
             m_TimeDial.ArcFill = (1 - m_Timer.GetProgress());
         }
 
-        public void Populate(ReviewQueue queue, string guess, CelestialObject obj, float time, int pts) {
+        public void PopulateCelestial(ReviewQueue queue, string guess, CelestialObject obj, float time, int pts) {
             m_Queue = queue;
             m_Timer = new Timer(time);
             m_Guess = guess;
-            m_RefObject = obj;
+            m_RefCelestialObject = obj;
             m_Points = pts;
             m_Image.sprite = obj.Data.Represent2D;
         }
 
+        public void PopulatePuzzle(ReviewQueue queue, PostcardPuzzle obj, float time, int pts)
+        {
+            m_Queue = queue;
+            m_Timer = new Timer(time);
+            m_RefPuzzleObject = obj;
+            m_Points = pts;
+            m_Image.sprite = null; // obj.Data.Represent2D;
+        }
+
         private bool CheckCorrect() {
-            return m_Guess.Equals(m_RefObject.Data.IdentifyEntryID);
+            // TODO: instead of these explicit checks for celestial vs. puzzle, unify under an IReviewable interface
+            if (m_RefCelestialObject) {
+                // celestial object
+                return m_Guess.Equals(m_RefCelestialObject.Data.IdentifyEntryID);
+            }
+            else if (m_RefPuzzleObject) {
+                // postcard puzzle
+                return m_RefPuzzleObject.EvaluateSolved();
+            }
+
+            return false;
         }
 
         private void SetComplete(bool correct) {
             GameConsts consts = FindObjectOfType<GameConsts>();
 
             if (correct) {
-                m_Background.color = consts.CorrectColor;
-                m_RefObject.Identified = true;
-                GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
-                Log.Msg("Item identified! {0}", m_Guess);
+                if (m_RefCelestialObject) {
+                    m_Background.color = consts.CorrectColor;
+                    m_RefCelestialObject.Identified = true;
+                    GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
+                    Log.Msg("Item identified! {0}", m_Guess);
+                }
+                else if (m_RefPuzzleObject) {
+                    Log.Msg("Puzzle completed successfully!");
+                    m_RefPuzzleObject.OnReviewComplete(true);
+                }
             } else {
-                m_Background.color = consts.IncorrectColor;
-                Log.Msg("Incorrect identification :( It's actually {0}", m_RefObject.Data.IdentifyEntryID);
-                m_Points = consts.IncorrectIDPenalty;
+                if (m_RefCelestialObject)
+                {
+                    m_Background.color = consts.IncorrectColor;
+                    Log.Msg("Incorrect identification :( It's actually {0}", m_RefCelestialObject.Data.IdentifyEntryID);
+                    m_Points = consts.IncorrectIDPenalty;
+                }
+                else if (m_RefPuzzleObject)
+                {
+                    Log.Msg("Puzzle completed unsuccessfully :(");
+                    m_RefPuzzleObject.OnReviewComplete(false);
+                    m_Points = consts.IncorrectIDPenalty;
+                }
             }
             m_Button.interactable = true;
         }

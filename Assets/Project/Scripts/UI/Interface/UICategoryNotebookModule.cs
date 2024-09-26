@@ -10,9 +10,6 @@ namespace AstroLab
 {
     public class UICategoryNotebookModule : UIInterfaceModule
     {
-
-        [SerializeField] private ReviewQueue m_Queue;
-
         [Space(5)]
         [Header("Notebook")]
         [SerializeField] private Button[] m_ItemButtons;
@@ -145,7 +142,7 @@ namespace AstroLab
             string realId = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.IdentifyEntryID;
 
             // TODO: dynamic points assignment
-            m_Queue.AddNewItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 7f, 3);
+            ReviewQueue.Instance.AddNewCelestialItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 7f, 3);
             //if (guessId.Equals(realId))
             //{
             //    FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;

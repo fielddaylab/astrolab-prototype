@@ -75,13 +75,23 @@ namespace AstroLab {
 
         public void OnFinishClicked() {
             Log.Warn("[PostcardPuzzle] Clicked Finish!");
+
+            ReviewQueue.Instance.AddNewPuzzleItem(this, 7, 5);
+
             if (EvaluateSolved()) {
-                Destroy(this);
+                // Destroy(this);
                 Log.Warn("[PostcardPuzzle] CORRECT! :D");
                 return;
             }
             Log.Warn("[PostcardPuzzle] INCORRECT D:");
         }
 
+        public void OnReviewComplete(bool correct)
+        {
+            if (correct)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
