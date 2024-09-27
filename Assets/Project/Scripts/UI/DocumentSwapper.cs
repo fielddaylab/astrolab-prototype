@@ -38,6 +38,7 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
                 postcard.transform.localPosition = Vector3.zero;
                 postcard.transform.localScale = new Vector3(DocModule.ModuleScale, DocModule.ModuleScale, 1);
             }
+            
             postcard.gameObject.SetActive(true);
 
         }
@@ -46,6 +47,7 @@ public class DocumentSwapper : MonoBehaviour, IDropHandler {
     public void OnDraggableGrabbed(DraggableFlags flags) {
         if (flags.HasFlag(DraggableFlags.Postcard)) {
             gameObject.SetActive(true);
+            this.transform.SetAsLastSibling();
         }
     }
 

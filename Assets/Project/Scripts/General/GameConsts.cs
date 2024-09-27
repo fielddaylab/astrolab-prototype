@@ -10,9 +10,7 @@ namespace AstroLab
         public int SkyboxDist = 1000;
 
         public int IncorrectIDPenalty = -1;
-
-        public Color CorrectColor = Color.green;
-        public Color IncorrectColor = Color.red;
+        public int StartingXP = 5;
 
         public Texture2D DefaultCursor;
         public Texture2D GrabCursor;
@@ -20,6 +18,12 @@ namespace AstroLab
         public Color[] NotationColors;
      
         public Sprite PostcardIcon;
+    }
+
+    static public  class Colors {
+        static public Color CorrectColor = Color.green;
+        static public Color IncorrectColor = Color.red;
+        static public Color CompletedColor = Color.blue;
     }
 
     static public class GameEvents

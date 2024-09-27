@@ -177,13 +177,22 @@ namespace AstroLab
 
         #endregion // Handlers
 
+        public void PopulateInputCoords(EqCoordinates coords) {
+            m_coordRAHrsInput.text = coords.RightAscension.x.ToString();
+            m_coordRAMinsInput.text = coords.RightAscension.y.ToString();
+            m_coordRASecsInput.text = coords.RightAscension.z.ToString();
+
+            m_coordDeclDegreesInput.text = coords.RightAscension.x.ToString();
+            m_coordDeclMinsInput.text = coords.RightAscension.y.ToString();
+            m_coordDeclSecsInput.text = coords.RightAscension.z.ToString();
+        }
         private void DisplayName()
         {
             if (FocusMgr.Instance.LastSelectedFocusable)
             {
                 if (FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified)
                 {
-                    string name = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.Name;
+                    string name = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.IdentifyEntryID;
                     m_objName.SetText(name);
                     m_nameData.SetPayload(new DataPayload(name));
                     m_nameData.gameObject.SetActive(true);

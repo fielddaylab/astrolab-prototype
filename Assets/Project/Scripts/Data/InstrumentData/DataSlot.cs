@@ -31,7 +31,7 @@ namespace AstroLab {
             }
         }
 
-        public void OnDrop(PointerEventData eventData) {
+        public virtual void OnDrop(PointerEventData eventData) {
             Log.Msg("Dropped item! {0}", eventData.pointerDrag.name);
             if (SlotLocked) return;
             if (eventData.pointerDrag.TryGetComponent<DataSource>(out DataSource dragged)) {
@@ -44,7 +44,7 @@ namespace AstroLab {
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData) {
+        public virtual void OnPointerClick(PointerEventData eventData) {
             if (!SlotFilled || SlotLocked) return;
             FilledData = NullData;
             DisplayFilledData();
@@ -109,14 +109,12 @@ namespace AstroLab {
             }
         }
 
-        private void HandleDraggableGrabbed(DraggableFlags drag) {
-            // all will match "Data" flag, need one other to be a match
+        protected virtual void HandleDraggableGrabbed(DraggableFlags drag) {
             if ((drag & SlotType) != 0 && DropHighlight != null && !SlotFilled) {
                 DropHighlight.gameObject.SetActive(true);
             }
         }
-        private void HandleDraggableDropped(DraggableFlags drag) {
-            // all will match "Data" flag, need one other to be a match
+        protected virtual void HandleDraggableDropped(DraggableFlags drag) {
             if ((drag & SlotType) != 0 && DropHighlight != null) {
                 DropHighlight.gameObject.SetActive(false);
             }

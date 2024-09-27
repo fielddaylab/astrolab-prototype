@@ -21,6 +21,7 @@ namespace AstroLab {
                 Destroy(gameObject);
                 return;
             }
+            AddXP(FindObjectOfType<GameConsts>().StartingXP);
         }
 
         public void AddXP(int add) {

@@ -71,11 +71,10 @@ namespace AstroLab {
         }
 
         private void SetComplete(bool correct) {
-            GameConsts consts = FindObjectOfType<GameConsts>();
 
             if (correct) {
                 if (m_RefCelestialObject) {
-                    m_Background.color = consts.CorrectColor;
+                    m_Background.color = Colors.CorrectColor;
                     m_RefCelestialObject.Identified = true;
                     GameMgr.Events.Dispatch(GameEvents.CelestialObjIdentified);
                     Log.Msg("Item identified! {0}", m_Guess);
@@ -85,9 +84,10 @@ namespace AstroLab {
                     m_RefPuzzleObject.OnReviewComplete(true);
                 }
             } else {
+                GameConsts consts = FindObjectOfType<GameConsts>();
                 if (m_RefCelestialObject)
                 {
-                    m_Background.color = consts.IncorrectColor;
+                    m_Background.color = Colors.IncorrectColor;
                     Log.Msg("Incorrect identification :( It's actually {0}", m_RefCelestialObject.Data.IdentifyEntryID);
                     m_Points = consts.IncorrectIDPenalty;
                 }
