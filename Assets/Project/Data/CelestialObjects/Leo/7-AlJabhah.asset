@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 7-AlJabhah
   m_EditorClassIdentifier: 
   m_name: Al Jabhah
-  m_rightAscension: {x: 11, y: 14, z: 6.5}
-  m_declination: {x: 20, y: 31, z: 25.4}
+  m_rightAscension: {x: 10, y: 7, z: 20}
+  m_declination: {x: 16, y: 45, z: 45.6}
   m_constellation: Leo
   m_useRadianRADecl: 0
   m_rightAscensionRadian: 0

@@ -123,7 +123,7 @@ namespace AstroLab
             CurrItem = CurrCategory.Items[idx].Name;
             Log.Msg("Current item: {0}_{1}", CurrCategory.Title, CurrItem);
             // Enable identify button
-            if (FocusMgr.Instance.LastSelectedFocusable) {
+            if (FocusMgr.Instance.LastSelectedFocusable && !FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified) {
                 m_identifyButton.interactable = true;
             }
         }
@@ -137,12 +137,13 @@ namespace AstroLab
         private void HandleIdentifyClicked()
         {
             if (!FocusMgr.Instance.LastSelectedFocusable || CurrCategory == null) { return; }
-
+            if (FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified) { return; } 
+            
             string guessId = CurrCategory.Title + "_" + CurrItem;
             string realId = FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Data.IdentifyEntryID;
 
             // TODO: dynamic points assignment
-            ReviewQueue.Instance.AddNewCelestialItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 7f, 3);
+            ReviewQueue.Instance.AddNewCelestialItem(guessId, FocusMgr.Instance.LastSelectedFocusable.CelestialObj, 7f, 5);
             //if (guessId.Equals(realId))
             //{
             //    FocusMgr.Instance.LastSelectedFocusable.CelestialObj.Identified = true;

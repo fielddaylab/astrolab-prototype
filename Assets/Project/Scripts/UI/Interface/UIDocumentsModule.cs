@@ -1,4 +1,5 @@
 using BeauUtil;
+using BeauUtil.Debugger;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace AstroLab
         public float MainScreenScale;
 
         public Postcard[] PostcardsToSpawn;
+        private BitArray PostcardsSpawned;
 
         [SerializeField] private Button m_CloseButton;
         [SerializeField] private RectTransform m_SwapZone;
@@ -34,9 +36,7 @@ namespace AstroLab
                 Destroy(this.gameObject);
                 return;
             }
-
-            SpawnPostcard(0);
-            SpawnPostcard(1);
+            
         }
 
         public override void Init()
@@ -44,6 +44,10 @@ namespace AstroLab
             base.Init();
             m_CloseButton.onClick.AddListener(HandleCloseClicked);
             m_IconNum.SetText(NewPostcards.ToStringLookup());
+            GameMgr.Events.Register(GameEvents.InstrumentUnlocksChanged, TrySpawnPuzzle);
+            PostcardsSpawned = new BitArray(PostcardsToSpawn.Length);
+            SpawnPostcard(0);
+            SpawnPostcard(1);
         }
 
         public override void Open() {
@@ -57,9 +61,18 @@ namespace AstroLab
         }
 
         public void SpawnPostcard(int index) {
+            if (index < 0 || index >= PostcardsToSpawn.Length) {
+                Log.Warn("[UIDocumentsModule] SpawnPostcard({0}) out of bounds", index);
+                return;
+            }
+            if (PostcardsSpawned[index]) {
+                Log.Warn("[UIDocumentsModule] Attempted to spawn postcard {0} but it was already spawned", index);
+                return;
+            }
             Postcard newCard = Instantiate(PostcardsToSpawn[index], this.transform);
             newCard.Initialize();
             newCard.transform.localPosition = new Vector3(UnityEngine.Random.Range(-300, 300), UnityEngine.Random.Range(-100, 100), 0);
+            PostcardsSpawned[index] = true;
             ChangeNewPostcardNum(+1);
         }
 
@@ -83,6 +96,13 @@ namespace AstroLab
             this.Close();
 
             if (wasOpen) { this.Open(); }
+        }
+
+        private void TrySpawnPuzzle() {
+            if (InstrumentsMgr.Instance.UnlockedInstruments.HasFlag(InstrumentFlags.Spectrometer) &&
+                InstrumentsMgr.Instance.UnlockedInstruments.HasFlag(InstrumentFlags.Photometer)) {
+                SpawnPostcard(2);
+            }
         }
 
         #endregion // Handlers
