@@ -18,6 +18,8 @@ namespace AstroLab
         public Texture2D GrabCursor;
 
         public Color[] NotationColors;
+     
+        public Sprite PostcardIcon;
     }
 
     static public class GameEvents

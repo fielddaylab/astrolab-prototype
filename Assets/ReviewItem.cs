@@ -52,7 +52,8 @@ namespace AstroLab {
             m_Timer = new Timer(time);
             m_RefPuzzleObject = obj;
             m_Points = pts;
-            m_Image.sprite = null; // obj.Data.Represent2D;
+            GameConsts consts = FindObjectOfType<GameConsts>();
+            m_Image.sprite = consts.PostcardIcon;
         }
 
         private bool CheckCorrect() {
