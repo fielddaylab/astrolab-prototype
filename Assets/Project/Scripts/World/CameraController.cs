@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AstroLab
@@ -11,8 +9,9 @@ namespace AstroLab
 
         [SerializeField] private Transform m_camRoot;
         [SerializeField] private Transform m_playerRoot;
-        public bool EnableMouseControls;
-        public bool EnableMouseAutoControls;
+        public bool EnableMouseControls = true;
+        public bool EnableMouseAutoControls = false;
+        public bool EnableSmoothKeyboardControls = true;
 
         [SerializeField] private RenderTexture m_renderTex;
         [SerializeField] private Vector2Int m_defaultRenderTexDims;
@@ -25,6 +24,7 @@ namespace AstroLab
         [SerializeField] private float m_lookSpeed;
         [SerializeField] private float m_lookRapidSpeed;
         [SerializeField] private float m_lookIncrement;
+        [SerializeField] private float m_smoothLookIncrement;
         [SerializeField] private Vector2 m_lookXClamp; // rotation limits in given direction (x is min X, y is max X)
         [SerializeField] private Vector2 m_lookYClamp; // rotation limits in given direction (x is min Y, y is max Y)
         [SerializeField] private float m_lookDragMod;
@@ -119,7 +119,11 @@ namespace AstroLab
                 ProcessMouseDragLook();
             }
 
-            ProcessKeyboardLook();
+            if (EnableSmoothKeyboardControls) {
+                ProcessKeyboardLookSmooth();
+            } else {
+                ProcessKeyboardLookDiscrete();
+            }
         }
 
         private void ProcessMouseAutoLook()
@@ -194,7 +198,7 @@ namespace AstroLab
             m_camRoot.localEulerAngles = angles;
         }
 
-        private void ProcessKeyboardLook()
+        private void ProcessKeyboardLookDiscrete()
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
@@ -215,6 +219,23 @@ namespace AstroLab
             {
                 // look right
                 AdjustHorizLook(m_lookIncrement);
+            }
+        }
+
+        private void ProcessKeyboardLookSmooth() {
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
+                // look up
+                AdjustVertLook(-m_smoothLookIncrement);
+            } else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
+                // look down
+                AdjustVertLook(m_smoothLookIncrement);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
+                // look left
+                AdjustHorizLook(-m_smoothLookIncrement);
+            } else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
+                // look right
+                AdjustHorizLook(m_smoothLookIncrement);
             }
         }
 

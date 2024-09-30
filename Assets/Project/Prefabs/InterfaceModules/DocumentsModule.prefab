@@ -272,7 +272,7 @@ MonoBehaviour:
   LayoutBehavior: 1
   m_rootGroup: {fileID: 2921194133670683176}
   ModuleScale: 0.5
-  MainScreenScale: 1
+  MainScreenScale: 0.75
   PostcardsToSpawn:
   - {fileID: 1239789897055356576, guid: 9a71b4de89e61cd4cab03583ae9a1f29, type: 3}
   - {fileID: 6342958890831588014, guid: 4d72fc7de146b8643b6d953d90953d5e, type: 3}
