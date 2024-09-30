@@ -67,6 +67,7 @@ namespace AstroLab
             GameMgr.Events.Register(GameEvents.UnfocusUp, HandleUnfocusUp);
 
             m_mouseDragLookActive = false;
+            EnableMouseControls = true;
         }
 
         private void Update()
