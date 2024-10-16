@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: temp_gray_3
-  m_Shader: {fileID: -6465566751694194690, guid: e2ca22e8842669f4fafd8ea9c4e131f2, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c297a34cf9102b1419a4d365fcfdf73a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -99,8 +99,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Scale: 3.63
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+    - _SpecBrightness: 0.7
+    - _SpecFocus: 14.2
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
