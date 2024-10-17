@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: temp_gray_2
-  m_Shader: {fileID: -6465566751694194690, guid: c297a34cf9102b1419a4d365fcfdf73a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: dacd2ae6d4df46741b1478789a6eb5e5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -93,6 +93,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Fresnel_Power: 1
     - _GlossMapScale: 1
     - _Glossiness: 3.95
     - _GlossyReflections: 1
@@ -103,7 +104,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Scale: 3.96
+    - _Scale: 1.4
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecBrightness: 31.2
@@ -119,10 +120,10 @@ Material:
     - _BaseColor: {r: 0.42599997, g: 0.42599997, b: 0.42599997, a: 1}
     - _Color: {r: 0.38319683, g: 0.6105335, b: 0.9811321, a: 1}
     - _Color_Base: {r: 1, g: 1, b: 1, a: 0}
-    - _Color_Dots: {r: 0.45631897, g: 0.5648332, b: 0.6415094, a: 0}
+    - _Color_Dots: {r: 0.8301887, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
-    - _Main_Color: {r: 0.9833313, g: 1, b: 0.9575472, a: 0}
+    - _Main_Color: {r: 0.82855797, g: 0.629717, b: 0.8396226, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.66415095, g: 0.83797044, b: 1, a: 0}
   m_BuildTextureStacks: []
